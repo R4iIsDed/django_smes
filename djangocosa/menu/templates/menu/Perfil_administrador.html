@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <header class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Panel de Administración</a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">Cerrar sesión</a>
+            </li>
+        </ul>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">
+                                <span data-feather="home"></span>
+                                Inicio
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Panel de Administración</h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Usuarios registrados</h5>
+                                <p class="card-text">Actualmente hay 100 usuarios registrados en el sistema.</p>
+                                <a href="#" class="btn btn-primary">Descargar informe PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Estadísticas de uso</h5>
+                                <p class="card-text">El sistema ha registrado 1000 visitas en la última semana.</p>
+                                <a href="#" class="btn btn-primary">Descargar informe PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Productos añadidos</h5>
+                                <p class="card-text">El sistema ha registrado 2450 productos añadidos en el último mes</p>
+                                <a href="#" class="btn btn-primary">Descargar informe PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <a href="chNGE.html" class="btn btn-primary">Cambiar contraseña</a>
+                <a href="banadmin.html" class="btn btn-primary">Administrar cuentas</a>
+                <a href="agregar_producto.html" class="btn btn-primary">Administrar productos</a>
+            </main>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

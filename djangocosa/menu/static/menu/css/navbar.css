@@ -1,0 +1,22 @@
+.navbar {
+    background-color: #66c463;
+    position: sticky;
+    top: 0;
+}
+
+.navbar-brand {
+    color: rgb(253, 253, 253);
+    font-size: 24px;
+}
+
+.nav-link {
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    margin-left: 20px;
+}
+
+.nav-link:hover {
+    color: #f1f1f1;
+    text-decoration: solid;
+}
+

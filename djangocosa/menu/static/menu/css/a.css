@@ -1,0 +1,45 @@
+.derecha{
+    margin: right;
+}
+.izquierda{
+    margin: left;
+}
+.centro{
+  text-align: center;
+  margin: right;
+}
+body {
+    background-color: #c9e47e;
+  }
+  h1 {
+    color: #4b9b6a;
+    font-size: 3rem;
+  }
+  p {
+    font-size: 1.5rem;
+  }
+  img {
+    margin-top: 2rem;
+  }
+
+  .contenedor2 {
+    width: 800px;
+    height: auto;
+    
+}
+
+.img{
+  object-fit: cover;
+  width:90%;
+  height:90%;
+}
+.weas{
+  object-fit: cover;
+  width:75%;
+  height:75%;
+}
+.weas2{
+  object-fit: cover;
+  width:25%;
+  height:25%;
+}

@@ -1,0 +1,61 @@
+.arriba-container{
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    z-index: -1;
+}
+
+.arriba-bottom{
+    width: 0px;
+    height: 0px;
+    background-color: green;
+    border-radius: 50%;
+    cursor: pointer;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: -1;
+    transition: .2s;
+}
+
+.arriba-bottom i{
+    position: absolute;
+    font-size: 17px;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    color: white;
+    transition: .2s;
+}
+
+.show{
+    z-index: 10;
+}
+
+.show .arriba-bottom{
+    animation: popup .3s ease-in-out;
+    width: 60px;
+    height: 60px;
+    z-index: 11;
+}
+
+.show i{
+    transform: translate(-50%,-50%) scale(1);
+}
+
+@keyframes popup{
+    0%{
+        width: 0rem;
+        height: 0rem;
+    }
+    50%{
+        width: 8rem;
+        height: 8rem;
+    }
+    100%{
+        width: 60px;
+        height: 60px;
+    }
+}

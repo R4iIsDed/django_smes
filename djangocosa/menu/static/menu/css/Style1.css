@@ -1,0 +1,17 @@
+.centrao{
+    text-align: center;
+}
+.img{
+    height: 20%;    
+}
+.weas2{
+    object-fit: cover;
+    width:25%;
+    height:25%;
+}
+.derecha{
+    margin: right;
+}
+.img-container{
+    width:80%;
+}

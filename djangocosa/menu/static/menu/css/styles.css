@@ -1,0 +1,160 @@
+body {
+
+    background-color: #fff;
+
+}
+
+
+
+#header{
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    /* background-attachment: fixed; */
+    background-image: url("../img/vivero_index1.jpg");
+    height: 40vw;
+    padding-top: 30px;
+    
+}
+
+#carouselExampleInterval{
+
+    background-color: rgba(102, 196, 99, 0.35);
+    padding:0;
+    border: #000 1px solid;
+
+}
+
+#header_ofertas{
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    /* background-attachment: fixed; */
+    background-image: url("../img/fondo_ofertas.jpg");
+    height: 40vw;
+    padding-top: 30px;
+    
+}
+
+#carouselofertas    .carousel-item img,
+#carouselofertas    .carousel-item {   
+
+    min-width: 99vw !important;
+    height: auto !important;
+
+
+}
+
+
+.producto_tienta{
+
+
+    height: 134.29px !important;
+    width: auto I !important;
+
+}
+
+.card-img-top{
+
+    height: auto !important;
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-height: 300px !important;
+    object-fit: cover;
+    margin-top: 0 !important;
+    min-height: 300px !important;
+
+} 
+
+.foto_especial{
+
+    object-fit: contain !important;
+
+}
+
+#titulo_oferta{
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-image: url("../img/fondo_oferta_prime.webp");
+
+}
+
+#titulo_oferta h1{
+
+    font-weight: 700 !important;
+    color:#ffffff;
+    text-shadow: 4px 4px 2px rgba(0,0,0,0.6);
+}
+
+#titulo_Carrito{
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-image: url("../img/Fondo_carrito_prime.webp");
+
+}
+
+#titulo_Carrito h1{
+
+    font-weight: 700 !important;
+    color:#ffffff;
+    text-shadow: 4px 4px 2px rgba(0,0,0,0.6);
+}
+
+
+#titulo_perfil{
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-image: url("../img/Fondo_perfil_prime.webp");
+
+}
+
+#titulo_perfil h1{
+
+    font-weight: 700 !important;
+    color:#ffffff;
+    text-shadow: 4px 4px 2px rgba(0,0,0,0.6);
+}
+
+
+#titulo_Contacto{
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-image: url("../img/Fondo_contacto_prime.webp");
+
+}
+
+#titulo_Contacto h1{
+
+    font-weight: 700 !important;
+    color:#ffffff;
+    text-shadow: 4px 4px 2px rgba(0,0,0,0.6);
+}
+
+
+#titulo_categorias{
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-image: url("../img/Fondo_categorias_prime.webp");
+
+}
+
+#titulo_categorias h1{
+
+    font-weight: 700 !important;
+    color:#ffffff;
+    text-shadow: 4px 4px 2px rgba(0,0,0,0.6);
+
+}

@@ -1,0 +1,71 @@
+/*** Responsive Styles Large Desktop And Above ***/
+
+@media all and (min-width: 1405px) {
+
+   
+
+    #producto_principal{
+
+        height: auto !important;
+        width: 300px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        max-height: 350px !important;
+        object-fit: contain;
+    }
+
+}
+
+/*** Responsive Styles Standard Desktop Only ***/
+
+@media all and (min-width: 1100px) and (max-width: 1405px) {
+
+
+    #producto_principal{
+
+        height: auto !important;
+        width: 300px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        max-height: 350px !important;
+        object-fit: contain;
+    }
+
+    
+}
+
+/*** Responsive Styles Tablet And Below ***/
+
+@media all and (max-width: 980px) {}
+
+/*** Responsive Styles Tablet Only ***/
+
+@media all and (min-width: 768px) and (max-width: 980px) {}
+
+/*** Responsive Styles Smartphone Only ***/
+
+@media all and (max-width: 767px) {
+
+    .card-img-top{
+
+        max-width: 100px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    
+
+}
+
+/*** Responsive Styles Smartphone Portrait ***/
+
+@media all and (max-width: 479px) {
+
+.card-img-top{
+
+    max-width: 100px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+    
+}

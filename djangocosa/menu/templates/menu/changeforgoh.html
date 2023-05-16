@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Change Password</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/weaformulario.css">
+  <style>
+    body {
+      background-image: url("img/bgus.webp");
+      background-size: cover;
+      height: 100vh;
+    }
+    .container {
+        height: 100vh;
+      margin-top: 30vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title text-center">Cambiar contraseña</h3>
+        <form id="forgoh" action="" method="post">
+            <div class="form-group">
+              <label for="email">correo</label>
+              <input type="text" class="form-control" id="email" name="email" placeholder="ejemplo@ejemplo.com">
+            </div>
+            <div class="form-group">
+              <label for="securityquestion">Pregunta de seguridad</label>
+              <select class="form-control" id="securityquestion" required>
+                <option value="">--Eliga una pregunta--</option>
+                <option value="1">cual era tu apodo de pequeño?</option>
+                <option value="2">nombre de tu primera mascota?</option>
+                <option value="3">programa favorito de infancia?</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="securityanswer">Respuesta</label>
+              <input type="text" class="form-control" id="securityanswer" name="securityanswer" placeholder="Ingrese la respuesta" />
+            </div>
+            <div class="form-group">
+              <label for="newpassword">Nueva contraseña</label>
+              <input type="password" class="form-control" id="newpassword" name="newpassword" placeholder="ingrese la Nueva contraseña" />
+            </div>
+            <div class="form-group">
+              <label for="confirmpassword">Confirme nueva contraseña</label>
+              <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Confirime su nueva contraseña" />
+            </div>
+            <input class="submit" type="submit" value="Cambiar contraseña" />
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.min.js"></script>
+ <script src="javaScript/validateforgoh.js"></script>
+</html>
