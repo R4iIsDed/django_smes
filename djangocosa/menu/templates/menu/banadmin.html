@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+  {% load static %}
 <head>
   <meta charset="UTF-8">
   <title>Eliminar cuenta</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/weaformulario.css">
+  <link rel="stylesheet" href="{% static 'menu/css/weaformulario.css' %}">
   <style>
     .container {
       margin-top: 50px;
@@ -78,7 +79,7 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.min.js"></script>
- <script src="javaScript/v_ban.js"></script>
- <script src="javaScript/v_ban2.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.min.js"></script>
+<script src="{% static 'menu/javaScript/v_ban.js' %}"></script>
+<script src="{% static 'menu/javaScript/v_ban2.js' %}"></script>
 </html>
