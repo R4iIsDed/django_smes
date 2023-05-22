@@ -49,3 +49,36 @@ class direccion(models):
     codigo_po=models.AutoField(max_length=30)
     fk_comuna=models.ForeignKey(comuna,on_delete=models.CASCADE)
     fk_usuario=models.ForeignKey(usuario,on_delete=models.CASCADE)
+
+class Categoria(models):
+    id_categoria = models.AutoField(primary_key=True)
+    nombre_categoria = models.AutoField(max_length=20)
+
+class Producto(models):
+    id_prod = models.AutoField(primary_key=True)
+    nombre_prod = models.AutoField(max_length=20)
+    descripcion = models.AutoField(max_length=500)
+    precio = models.IntegerField()
+    stock = 
+    fk_categoria = models.ForeignKey(Categoria,on_delete=models.CASCADE)
+
+class Detalle(models):
+    id_detalle = models.AutoField(primary_key=True)
+    cantidad = models.IntegerField()
+    subtotal = models.IntegerField()
+    fk_compra = models.ForeignKey(Factura,on_delete=models.CASCADE)
+    fk_producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+
+class Factura(models):
+    id_factura = models.AutoField(primary_key=True)
+    fecha_compra = models.DateField()
+    f_despacho = models.DateField()
+    f_entrega = models.DateField()
+    estatus = models.AutoField(max_length=200)
+    cod_despacho = models.AutoField(max_length=40)
+    costo_despacho = models.IntegerField()
+    comp_despacho = models.AutoField(max_length=30)
+    total = models.IntegerField()
+    carrito = models.AutoField(max_length=40)
+    fk_direccion = models.ForeignKey(direccion,on_delete=models.CASCADE)
+    fk_usuario = models.ForeignKey(usuario,on_delete=models.CASCADE)
