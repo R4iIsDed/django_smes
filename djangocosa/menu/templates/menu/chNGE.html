@@ -27,7 +27,8 @@
     <div class="card">
       <div class="card-body">
         <h3 class="card-title text-center">Cambiar contraseña</h3>
-        <form id="change" action="" method="post">
+        <form id="change" action="{% url 'login' %}" method="post">
+          {%csrf_token%}
           <div class="form-group">
             <label for="currentpassword">Contraseña actual</label>
             <input type="password" class="form-control" id="currentpassword" name="currentpassword" placeholder="ingrese su contraseña actual">

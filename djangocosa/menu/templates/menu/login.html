@@ -31,7 +31,8 @@
     <div class="card">
       <div class="card-body">
         <h2 class="card-title mb-4">Inicio sesion</h2>
-        <form id="login" action="" method="post">
+        <form id="login" action="{% url 'index' %}" method="post">
+          {%csrf_token%}
           <div class="form-group">
             <label for="email">correo</label>
             <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="ejemplo@ejemplo.com">
