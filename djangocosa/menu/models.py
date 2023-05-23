@@ -6,19 +6,31 @@ class Region(models.Model):
     id_reg=models.AutoField(primary_key=True)
     nombre=models.CharField(max_length=20)
 
+    def __str__(self) -> str:
+        return self.nombre
+
 class Comuna(models.Model):
     id_com=models.AutoField(primary_key=True)
     nombre=models.CharField(max_length=20)
     region=models.ForeignKey(Region,on_delete=models.CASCADE)
 
+    def __str__(self) -> str:
+        return self.nombre
+    
 class Rol(models.Model):
     id_rol=models.AutoField(primary_key=True)
     nombre=models.CharField(max_length=30)
 
+    def __str__(self) -> str:
+        return self.nombre
+    
 class Pregunta(models.Model):
     id_preg=models.AutoField(primary_key=True)
     nombre=models.CharField(max_length=30)
 
+    def __str__(self) -> str:
+        return self.nombre
+    
 class Usuario(models.Model):
     id_usuario=models.AutoField(primary_key=True)
     rut=models.CharField(max_length=12)
@@ -31,6 +43,9 @@ class Usuario(models.Model):
     pregunta=models.ForeignKey(Pregunta,on_delete=models.CASCADE)
     respuesta=models.CharField(max_length=20)
 
+    def __str__(self) -> str:
+        return self.rut
+    
 class Direccion(models.Model):
     id_direc=models.AutoField(primary_key=True)
     calle=models.CharField(max_length=30)
@@ -39,10 +54,15 @@ class Direccion(models.Model):
     comuna=models.ForeignKey(Comuna,on_delete=models.CASCADE)
     usuario=models.ForeignKey(Usuario,on_delete=models.CASCADE)
 
+    def __str__(self) -> str:
+        return self.codigo_po
 class Categoria(models.Model):
     id_categoria = models.AutoField(primary_key=True)
     nombre_categoria = models.CharField(max_length=20)
 
+    def __str__(self) -> str:
+        return self.nombre_categoria
+    
 class Producto(models.Model):
     id_prod = models.AutoField(primary_key=True)
     nombre_prod = models.CharField(max_length=20)
@@ -51,6 +71,9 @@ class Producto(models.Model):
     stock = models.IntegerField()
     categoria = models.ForeignKey(Categoria,on_delete=models.CASCADE)
 
+    def __str__(self) -> str:
+        return self.nombre_prod
+    
 class Factura(models.Model):
     id_factura = models.AutoField(primary_key=True)
     fecha_compra = models.DateField()
