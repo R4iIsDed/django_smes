@@ -2,83 +2,73 @@ from django.db import models
 
 # Create your models here.
 
-class Tabla1(models):
-    codigoTabla1= models.AutoField(primary_key=True)
-    nombre = models.AutoField(max_length=20)
-    
-class tabla2(models):
-    codigoTabla2= models.AutoField(primary_key=True)
-    nombre2 = models.AutoField(max_length=30,null= True,blank=False)
-    edad = models.IntegerField()
-    Foto = models.ImageField(upload_to="tabla2_images")
-    tabla1 = models.ForeignKey(Tabla1,on_delete=models.CASCADE)
-
-class region(models):
+class Region(models.Model):
     id_reg=models.AutoField(primary_key=True)
-    nombre=models.AutoField(max_length=20)
+    nombre=models.CharField(max_length=20)
 
-class comuna(models):
+class Comuna(models.Model):
     id_com=models.AutoField(primary_key=True)
-    nombre=models.AutoField(max_length=20)
-    fk_id_reg=models.ForeignKey(region,on_delete=models.CASCADE)
+    nombre=models.CharField(max_length=20)
+    region=models.ForeignKey(Region,on_delete=models.CASCADE)
 
-class rol(models):
+class Rol(models.Model):
     id_rol=models.AutoField(primary_key=True)
-    nombre=models.AutoField(max_length=30)
+    nombre=models.CharField(max_length=30)
 
-class preguntas(models):
+class Pregunta(models.Model):
     id_preg=models.AutoField(primary_key=True)
-    nombre=models.AutoField(max_length=30)
+    nombre=models.CharField(max_length=30)
 
-class usuario(models):
+class Usuario(models.Model):
     id_usuario=models.AutoField(primary_key=True)
-    rut=models.AutoField(max_length=)
-    nombres=models.AutoField(max_length=)
-    apellidos=models.AutoField(max_length=)
-    telefono=models.AutoField(max_length=)
-    correo=models.AutoField(max_length=)
-    clave=models.AutoField(max_length=)
-    fk_rol=models.ForeignKey(rol,on_delete=models.CASCADE)
-    fk_preg=models.ForeignKey(preguntas,on_delete=models.CASCADE)
-    respuesta=models.AutoField(max_length=)
+    rut=models.CharField(max_length=12)
+    nombres=models.CharField(max_length=30)
+    apellidos=models.CharField(max_length=30)
+    telefono=models.CharField(max_length=10)
+    correo=models.CharField(max_length=50)
+    clave=models.CharField(max_length=20)
+    rol=models.ForeignKey(Rol,on_delete=models.CASCADE)
+    pregunta=models.ForeignKey(Pregunta,on_delete=models.CASCADE)
+    respuesta=models.CharField(max_length=20)
 
-class direccion(models):
+class Direccion(models.Model):
     id_direc=models.AutoField(primary_key=True)
-    calle=models.AutoField(max_length=30)
-    num=models.AutoField(max_length=20)
-    codigo_po=models.AutoField(max_length=30)
-    fk_comuna=models.ForeignKey(comuna,on_delete=models.CASCADE)
-    fk_usuario=models.ForeignKey(usuario,on_delete=models.CASCADE)
+    calle=models.CharField(max_length=30)
+    num=models.CharField(max_length=20)
+    codigo_po=models.CharField(max_length=30)
+    comuna=models.ForeignKey(Comuna,on_delete=models.CASCADE)
+    usuario=models.ForeignKey(Usuario,on_delete=models.CASCADE)
 
-class Categoria(models):
+class Categoria(models.Model):
     id_categoria = models.AutoField(primary_key=True)
-    nombre_categoria = models.AutoField(max_length=20)
+    nombre_categoria = models.CharField(max_length=20)
 
-class Producto(models):
+class Producto(models.Model):
     id_prod = models.AutoField(primary_key=True)
-    nombre_prod = models.AutoField(max_length=20)
-    descripcion = models.AutoField(max_length=500)
+    nombre_prod = models.CharField(max_length=20)
+    descripcion = models.CharField(max_length=500)
     precio = models.IntegerField()
-    stock = 
-    fk_categoria = models.ForeignKey(Categoria,on_delete=models.CASCADE)
+    stock = models.IntegerField()
+    categoria = models.ForeignKey(Categoria,on_delete=models.CASCADE)
 
-class Detalle(models):
-    id_detalle = models.AutoField(primary_key=True)
-    cantidad = models.IntegerField()
-    subtotal = models.IntegerField()
-    fk_compra = models.ForeignKey(Factura,on_delete=models.CASCADE)
-    fk_producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
-
-class Factura(models):
+class Factura(models.Model):
     id_factura = models.AutoField(primary_key=True)
     fecha_compra = models.DateField()
     f_despacho = models.DateField()
     f_entrega = models.DateField()
-    estatus = models.AutoField(max_length=200)
-    cod_despacho = models.AutoField(max_length=40)
+    estatus = models.CharField(max_length=200)
+    cod_despacho = models.CharField(max_length=40)
     costo_despacho = models.IntegerField()
-    comp_despacho = models.AutoField(max_length=30)
+    comp_despacho = models.CharField(max_length=30)
     total = models.IntegerField()
-    carrito = models.AutoField(max_length=40)
-    fk_direccion = models.ForeignKey(direccion,on_delete=models.CASCADE)
-    fk_usuario = models.ForeignKey(usuario,on_delete=models.CASCADE)
+    carrito = models.CharField(max_length=40)
+    direccion = models.ForeignKey(Direccion,on_delete=models.CASCADE)
+    usuario = models.ForeignKey(Usuario,on_delete=models.CASCADE)
+
+class Detalle(models.Model):
+    id_detalle = models.AutoField(primary_key=True)
+    cantidad = models.IntegerField()
+    subtotal = models.IntegerField()
+    factura = models.ForeignKey(Factura,on_delete=models.CASCADE)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+
