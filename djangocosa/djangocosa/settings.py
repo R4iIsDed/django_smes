@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'djangocosa.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.oracle',
         'NAME': '127.0.0.1:1521/orcl',
         'USER': 'se_venden_plantas',
         'PASSWORD': 'se_venden_plantas',
