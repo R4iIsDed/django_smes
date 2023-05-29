@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+  {% load static %}
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,14 +16,14 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link type="text/css" rel="stylesheet" href="css/estilos.css">
-  <link rel="stylesheet" href="css/navbar.css">
+  <link type="text/css" rel="stylesheet" href="{% static 'css/estilos.css' %}">
+  <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark" style="z-index: 20;">
-    <a class="navbar-brand" href="index.html"><i class="fas fa-home"></i> Se venden plantas¿</a>
+    <a class="navbar-brand" href="{% url 'index' %}"><i class="fas fa-home"></i> Se venden plantas¿</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -31,35 +31,35 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="index.html"><i class="fa fa-house"></i> Inicio</a>
+          <a class="nav-link" href="{% url 'index' %}"><i class="fa fa-house"></i> Inicio</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="ofertas.html"><i class="fa-solid fa-money-bill-trend-up"></i> Ofertas</a>
+          <a class="nav-link" href="{% url 'ofertas' %}"><i class="fa-solid fa-money-bill-trend-up"></i> Ofertas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="Carrito.html"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
+          <a class="nav-link" href="{% url 'Carrito' %}"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="profile.html"><i class="fa-solid fa-user"></i> Perfil</a>
+          <a class="nav-link" href="{% url 'profile' %}"><i class="fa-solid fa-user"></i> Perfil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="Contacto.html"><i>
+          <a class="nav-link" href="{% url 'Contacto' %}"><i>
               <class class="fa fa-contact-card"></class>
             </i> Contacto</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="Categorias.html"><i>
+          <a class="nav-link" href="{% url 'Categorias' %}"><i>
               <class class="fa fa-book-bookmark"></class>
             </i> Categorias</a>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="login.html"><i class="fa fa-user-alt"></i> Iniciar sesion</a>
+          <a class="nav-link" href="{% url 'login' %}"><i class="fa fa-user-alt"></i> Iniciar sesion</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="create.html"><i class="fa fa-user-alt"></i> Registrarse</a>
+          <a class="nav-link" href="{% url 'create' %}"><i class="fa fa-user-alt"></i> Registrarse</a>
         </li>
       </ul>
     </div>
@@ -80,7 +80,7 @@
           <div class="d-flex">
             <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1"
               style="max-width: 3rem" />
-            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="Carrito.html">Añadir al carrito</a>
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'Carrito' %}">Añadir al carrito</a>
             </div>
             </button>
           </div>
@@ -108,7 +108,7 @@
             </div>
             <!-- Product actions-->
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-              <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="Carrito.html">Añadir al carro</a>
+              <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'Carrito' %}">Añadir al carro</a>
               </div>
             </div>
           </div>
@@ -139,7 +139,7 @@
             </div>
             <!-- Product actions-->
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-              <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="Carrito.html">Añadir al carro</a>
+              <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'Carrito' %}">Añadir al carro</a>
               </div>
             </div>
           </div>

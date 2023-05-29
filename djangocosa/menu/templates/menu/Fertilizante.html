@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    {% load static %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,48 +12,48 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link type="text/css" rel="stylesheet" href="css/styles.css">
-    <link type="text/css" rel="stylesheet" href="css/productos.css">
-    <link rel="stylesheet" href="css/navbar.css">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/productos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark" style="z-index: 20;">
-        <a class="navbar-brand" href="index.html"><i class=""></i> Se venden plantas¿</a>
+        <a class="navbar-brand" href="{% url 'index' %}"><i class=""></i> Se venden plantas¿</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html"><i class="fa fa-house"></i> Inicio</a>
+                    <a class="nav-link" href="{% url 'index' %}"><i class="fa fa-house"></i> Inicio</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="ofertas.html"><i class="fa-solid fa-money-bill-trend-up"></i> Ofertas</a>
+                    <a class="nav-link" href="{% url 'ofertas' %}"><i class="fa-solid fa-money-bill-trend-up"></i> Ofertas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Carrito.html"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
+                    <a class="nav-link" href="{% url 'Carrito' %}"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="profile.html"><i class="fa-solid fa-user"></i> Perfil</a>
+                    <a class="nav-link" href="{% url 'profile' %}"><i class="fa-solid fa-user"></i> Perfil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Contacto.html"><i>
+                    <a class="nav-link" href="{% url 'Contacto' %}"><i>
                             <class class="fa fa-contact-card"></class>
                         </i> Contacto</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Categorias.html"><i>
+                    <a class="nav-link" href="{% url 'Categorias' %}"><i>
                             <class class="fa fa-book-bookmark"></class>
                         </i> Categorias</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                  <a class="nav-link" href="login.html"><i class="fa fa-user-alt"></i> Iniciar sesion</a>
+                  <a class="nav-link" href="{% url 'login' %}"><i class="fa fa-user-alt"></i> Iniciar sesion</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="create.html"><i class="fa fa-user-alt"></i> Registrarse</a>
+                  <a class="nav-link" href="{% url 'create' %}"><i class="fa fa-user-alt"></i> Registrarse</a>
                 </li>
               </ul>
             </div>
@@ -65,7 +66,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="card">
-                            <a href="Compra_fertilizante1.html"><img class="card-img-top foto_especial" style="width: 50%;" src="img/Fertilizante1.png" alt="Producto 1"></a>
+                            <a href="{% url 'Compra_fertilizante1' %}"><img class="card-img-top foto_especial" style="width: 50%;" src="img/Fertilizante1.png" alt="Producto 1"></a>
                             <div class="card-body">
                                 <h5 class="card-title">Fertilizante anasac</h5>
                                 <p class="card-text">Aplicar en la tierra en la cual tiene su planta (Preferiblemente utilizar para plantas en un lugar mas abierto)</p>
@@ -73,7 +74,7 @@
                                 <button onclick="irAPagina()">Comprar ahora</button>
                                 <script>
                                     function irAPagina() {
-                                      window.location.href = "Carrito.html";
+                                      window.location.href = "{% url 'Carrito' %}";
                                     }
                                   </script>
                             </div>
@@ -81,7 +82,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="card">
-                            <a href="Compra_fertilizante2.html"><img class="card-img-top foto_especial" style="width: 50%;"src="img/Fertilizante2.png" alt="Producto 2"></a>
+                            <a href="{% url 'Compra_fertilizante2' %}"><img class="card-img-top foto_especial" style="width: 50%;"src="img/Fertilizante2.png" alt="Producto 2"></a>
                             <div class="card-body">
                                 <h5 class="card-title">Gas Agricola (Acti Root)</h5>
                                 <p class="card-text">Rociar encima de la planta o la tierra de cualquiera de las dos maneras es la correcta</p>
@@ -89,7 +90,7 @@
                                 <button onclick="irAPagina()">Comprar ahora</button>
                                 <script>
                                     function irAPagina() {
-                                      window.location.href = "Carrito.html";
+                                      window.location.href = "{% url 'Carrito' %}";
                                     }
                                   </script>
                             </div>
@@ -97,7 +98,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="card">
-                            <a href="Compra_fertilizante3.html"><img class="card-img-top foto_especial" style="width: 80%;" src="img/Fertilizante3.png" alt="Producto 3"></a>
+                            <a href="{% url 'Compra_fertilizante3' %}"><img class="card-img-top foto_especial" style="width: 80%;" src="img/Fertilizante3.png" alt="Producto 3"></a>
                             <div class="card-body">
                                 <h5 class="card-title">Sustrato para plantas de interior</h5>
                                 <p class="card-text">esparcirlo por toda la maceta para una mejor superposicion de esta, asi se distribuira mejor y tendra mayor efectividad</p>
@@ -105,7 +106,7 @@
                                 <button onclick="irAPagina()">Comprar ahora</button>
                                 <script>
                                     function irAPagina() {
-                                      window.location.href = "Carrito.html";
+                                      window.location.href = "{% url 'Carrito' %}";
                                     }
                                   </script>
                             </div>
@@ -113,7 +114,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="card">
-                            <a href="Compra_fertilizante4.html"><img class="card-img-top foto_especial" style="width: 50%;" src="img/Fertilizante4.png" alt="Producto 4"></a>
+                            <a href="{% url 'Compra_fertilizante4' %}"><img class="card-img-top foto_especial" style="width: 50%;" src="img/Fertilizante4.png" alt="Producto 4"></a>
                             <div class="card-body">
                                 <h5 class="card-title">Liquido Top Crop (Fertilizante)</h5>
                                 <p class="card-text">esparcirlo en la tierra de la planta (tener cuidado ya que este liquido es toxico para los niños mas pequeños)</p>
@@ -121,7 +122,7 @@
                                 <button onclick="irAPagina()">Comprar ahora</button>
                                 <script>
                                     function irAPagina() {
-                                      window.location.href = "Carrito.html";
+                                      window.location.href = "{% url 'Carrito' %}";
                                     }
                                   </script>
                             </div>
@@ -129,7 +130,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="card">
-                            <a href="Compra_fertilizante5.html"><img class="card-img-top foto_especial" style="width: 50%;"src="img/Fertilizante5.png" alt="Producto 5"></a>
+                            <a href="{% url 'Compra_fertilizante5' %}"><img class="card-img-top foto_especial" style="width: 50%;"src="img/Fertilizante5.png" alt="Producto 5"></a>
                             <div class="card-body">
                                 <h5 class="card-title">Biofertilizante para plantas de interior</h5>
                                 <p class="card-text">Este sustrato beneficia mucho a las flores como rosas y tulipanes </p>
@@ -137,7 +138,7 @@
                                 <button onclick="irAPagina()">Comprar ahora</button>
                                 <script>
                                     function irAPagina() {
-                                      window.location.href = "Carrito.html";
+                                      window.location.href = "{% url 'Carrito' %}";
                                     }
                                   </script>
                             </div>
@@ -145,7 +146,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="card"> 
-                            <a href="Compra_fertilizante6.html"><img class="card-img-top foto_especial"style="width: 50%;" src="img/Fertilizante6.png" alt="Producto 6"></a>
+                            <a href="{% url 'Compra_fertilizante6' %}"><img class="card-img-top foto_especial"style="width: 50%;" src="img/Fertilizante6.png" alt="Producto 6"></a>
                             <div class="card-body">
                                 <h5 class="card-title">Pastillas Vitasac </h5>
                                 <p class="card-text">estas pastillas se colocan en la tierra y se les hecha agua, la cual despues de un tiempo se disolvera y dejara la tierra de una forma muy beneficiosa para la flor  6</p>
@@ -153,7 +154,7 @@
                                 <button onclick="irAPagina()">Comprar ahora</button>
                                 <script>
                                     function irAPagina() {
-                                      window.location.href = "Carrito.html";
+                                      window.location.href = "{% url 'Carrito' %}";
                                     }
                                   </script>
                                   

@@ -15,9 +15,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-  <link rel="stylesheet" href="{% static 'css/producto_solo.css' %}">
-  <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/producto_solo.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 </head>
 
 <body>
@@ -37,7 +37,7 @@
           <a class="nav-link" href="{% url 'ofertas' %}"><i class="fa-solid fa-money-bill-trend-up"></i> Ofertas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'carrito' %}"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
+          <a class="nav-link" href="{% url 'Carrito' %}"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'profile' %}"><i class="fa-solid fa-user"></i> Perfil</a>
