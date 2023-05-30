@@ -7,7 +7,7 @@ def login (request) :
 def create (request) :
     return render (request, 'menu/create.html');
 
-def index (request) :
+def index(request) :
     return render (request, 'menu/index.html');
 
 def agregar_producto(request):
@@ -25,7 +25,7 @@ def Cactus(request):
 def Carrito(request):
     return render(request, 'menu/Carrito.html');
 
-def categorias(request):
+def Categorias(request):
     return render(request, 'menu/categorias.html');
 
 def changeforgoh(request):
