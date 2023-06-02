@@ -74,7 +74,7 @@
     <section class="py-5">
         <div class="container px-4 px-lg-5 my-5">
             <div class="row gx-4 gx-lg-5 align-items-center">
-                <div class="col-md-6"><img class=" mb-5 mb-md-0" id="producto_principal" src="img/Flor1.jpg"
+                <div class="col-md-6"><img class=" mb-5 mb-md-0" id="producto_principal" src="{% static 'img/Flor1.jpg' %}"
                         alt="..." /></div>
                 <div class="col-md-6">
                     <div class="small mb-1">SKU: BST-498</div>
@@ -104,7 +104,7 @@
                 <div class="col mb-5">
                     <div class="card h-100">
                         <!-- Product image-->
-                        <img href="{% url 'Carrito' %}" src="img/Flor2.jpg" alt="..." />
+                        <img href="{% url 'Carrito' %}" src="{% static 'img/Flor2.jpg' %}" alt="..." />
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
@@ -127,7 +127,7 @@
                         <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Se vende
                         </div>
                         <!-- Product image-->
-                        <img src="img/Flor3.jpg" alt="..." />
+                        <img src="{% static 'img/Flor3.jpg' %}" alt="..." />
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
