@@ -1,6 +1,43 @@
 from django.shortcuts import render
-
+from django.contrib.auth.hashers import check_password
+from django.contrib.auth import authenticate,login, logout
+from django.contrib.auth.models import user
 # Create your views here.
+
+def create (request) :
+
+    form = createform()
+
+    if request.method == "POST":
+
+        form = createform(request.POST)
+
+        if form.is_valid():
+            
+            usuario = Usuario()
+
+            usuario.Rut = form.cleaned_data['Rut']
+            usuario.name = form.cleaned_data['name']
+            usuario.apellido = form.cleaned_data['apellido']
+            usuario.telefono = form.cleaned_data['telefono']
+            usuario.correo = form.cleaned_data['email']
+            usuario.clave = form.cleaned_data['password']
+            usuario.pregunta = form.cleaned_data['security-question']
+            usuario.respuesta = form.cleaned_data['securityanswer']
+            usuario.rol = 0
+
+            usuario.save()
+
+            user = user.objects.auth.create_user(username = 'email',
+                                                email = 'email',
+                                                password = 'password')
+            user.save()
+        else:
+            print("ta mala la wea")
+
+     return render(request, 'menu/create.html');
+
+
 def login (request) :
     return render(request, 'menu/login.html');
 

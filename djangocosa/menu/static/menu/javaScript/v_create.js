@@ -9,9 +9,25 @@ $(document).ready(function(e){
         validClass: "valid success-alert",
 
         rules: {
+            Rut: {
+                required:true,
+                minlength: 5,
+                noSpace: true
+            },
             name: {
                 required:true,
-                minlength: 5
+                minlength: 5,
+                noSpace: true
+            },
+            apellido: {
+                required:true,
+                minlength: 5,
+                noSpace: true
+            },
+            telefono: {
+                required:true,
+                minlength: 5,
+                noSpace: true
             },
             email: { 
                 required: true,
