@@ -3,6 +3,9 @@ $(document).ready(function(e){
     jQuery.validator.addMethod("noSpace", function(value, element) { 
         return value.indexOf(" ") < 0 && value != ""; 
       }, "No dejes espacios por favor");
+    $.validator.addMethod('lowercasesymbols', function(value) {
+    return value.match(/^[a-z\[!@# $%&*\/?=_.,:;\\\]"-]+$/);
+}, 'La contraseña debe contener solo caracteres minisculas y al menos un simbolo');
     $("#create").validate({
         errorClass: "error fail-alert",
 
@@ -12,7 +15,8 @@ $(document).ready(function(e){
             Rut: {
                 required:true,
                 minlength: 5,
-                noSpace: true
+                noSpace: true,
+                maxlenght: 20,
             },
             name: {
                 required:true,
@@ -37,7 +41,9 @@ $(document).ready(function(e){
             password: {
                 required: true,
                 minlength: 5,
-                noSpace: true
+                noSpace: true,
+                maxlenght:20,
+                lowercasesymbols: true
             },
             password2: {
                 required: true,
@@ -57,6 +63,15 @@ $(document).ready(function(e){
             name:{
                 required: " Ingrese su nombre ",
                 minlength: " El nombre debe tener minimo 5 caracteres "
+            },
+            apellido:{
+                required: " Ingrese su apellido ",
+                minlength: " El nombre debe tener minimo 5 caracteres "
+            },
+            Rut:{
+                required: " Ingrese su Rut ",
+                minlength: " El Rut debe tener 10 caracteres minimo ",
+                maxlenght: "el rut debe tener maximo 20 caracteres"
             },
             email: {
                 required: " Ingrese su email ",
