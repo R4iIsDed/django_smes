@@ -68,6 +68,20 @@ def create (request) :
 
 
 def login (request) :
+    u = request.POST['email']
+    c = request.POST['password']
+
+    user = authenticate(username = u, password = c)
+
+    if user is not None:
+        if user.is_active:
+            login(request,user)
+            return redirect('principal')
+        else:
+            messages.error(request,'Usuario Inactivo')
+    else:
+        messages.error(request,'Usuario y/o contraseña incorrecta')
+
     return render(request, 'menu/login.html');
 
 
