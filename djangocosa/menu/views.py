@@ -229,7 +229,11 @@ def eliminar_producto(request):
     return render(request, 'menu/eliminar_producto.html');
 
 def Fertilizante(request):
-    return render(request, 'menu/Fertilizante.html');
+    prod = Producto.objects.filter(categoria = 3)
+    contexto ={
+        "prod":prod
+        }
+    return render(request, 'menu/Fertilizante.html', contexto);
 
 def Flores(request):
     return render(request, 'menu/Flores.html');

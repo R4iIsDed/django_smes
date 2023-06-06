@@ -64,104 +64,17 @@
     <body>
         <div class="container mt-5">
             <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                            <a href="{% url 'Compra_fertilizante1' %}"><img class="card-img-top foto_especial" style="width: 50%;" src="{% static 'img/Fertilizante1.png' %}" alt="Producto 1"></a>
-                            <div class="card-body">
-                                <h5 class="card-title">Fertilizante anasac</h5>
-                                <p class="card-text">Aplicar en la tierra en la cual tiene su planta (Preferiblemente utilizar para plantas en un lugar mas abierto)</p>
-                                $15.000<br><br>
-                                <button onclick="irAPagina()">Comprar ahora</button>
-                                <script>
-                                    function irAPagina() {
-                                      window.location.href = "{% url 'Carrito' %}";
-                                    }
-                                  </script>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <a href="{% url 'Compra_fertilizante2' %}"><img class="card-img-top foto_especial" style="width: 50%;"src="{% static 'img/Fertilizante2.png' %}" alt="Producto 2"></a>
-                            <div class="card-body">
-                                <h5 class="card-title">Gas Agricola (Acti Root)</h5>
-                                <p class="card-text">Rociar encima de la planta o la tierra de cualquiera de las dos maneras es la correcta</p>
-                                $12.000<br><br>
-                                <button onclick="irAPagina()">Comprar ahora</button>
-                                <script>
-                                    function irAPagina() {
-                                      window.location.href = "{% url 'Carrito' %}";
-                                    }
-                                  </script>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <a href="{% url 'Compra_fertilizante3' %}"><img class="card-img-top foto_especial" style="width: 80%;" src="{% static 'img/Fertilizante3.png' %}" alt="Producto 3"></a>
-                            <div class="card-body">
-                                <h5 class="card-title">Sustrato para plantas de interior</h5>
-                                <p class="card-text">esparcirlo por toda la maceta para una mejor superposicion de esta, asi se distribuira mejor y tendra mayor efectividad</p>
-                                $45.000<br><br>
-                                <button onclick="irAPagina()">Comprar ahora</button>
-                                <script>
-                                    function irAPagina() {
-                                      window.location.href = "{% url 'Carrito' %}";
-                                    }
-                                  </script>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <a href="{% url 'Compra_fertilizante4' %}"><img class="card-img-top foto_especial" style="width: 50%;" src="{% static 'img/Fertilizante4.png' %}" alt="Producto 4"></a>
-                            <div class="card-body">
-                                <h5 class="card-title">Liquido Top Crop (Fertilizante)</h5>
-                                <p class="card-text">esparcirlo en la tierra de la planta (tener cuidado ya que este liquido es toxico para los niños mas pequeños)</p>
-                                $22.000<br><br>
-                                <button onclick="irAPagina()">Comprar ahora</button>
-                                <script>
-                                    function irAPagina() {
-                                      window.location.href = "{% url 'Carrito' %}";
-                                    }
-                                  </script>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <a href="{% url 'Compra_fertilizante5' %}"><img class="card-img-top foto_especial" style="width: 50%;"src="{% static 'img/Fertilizante5.png' %}" alt="Producto 5"></a>
-                            <div class="card-body">
-                                <h5 class="card-title">Biofertilizante para plantas de interior</h5>
-                                <p class="card-text">Este sustrato beneficia mucho a las flores como rosas y tulipanes </p>
-                                $18.000 <br><br>
-                                <button onclick="irAPagina()">Comprar ahora</button>
-                                <script>
-                                    function irAPagina() {
-                                      window.location.href = "{% url 'Carrito' %}";
-                                    }
-                                  </script>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card"> 
-                            <a href="{% url 'Compra_fertilizante6' %}"><img class="card-img-top foto_especial"style="width: 50%;" src="{% static 'img/Fertilizante6.png' %}" alt="Producto 6"></a>
-                            <div class="card-body">
-                                <h5 class="card-title">Pastillas Vitasac </h5>
-                                <p class="card-text">estas pastillas se colocan en la tierra y se les hecha agua, la cual despues de un tiempo se disolvera y dejara la tierra de una forma muy beneficiosa para la flor  6</p>
-                                $11.000<br><br>
-                                <button onclick="irAPagina()">Comprar ahora</button>
-                                <script>
-                                    function irAPagina() {
-                                      window.location.href = "{% url 'Carrito' %}";
-                                    }
-                                  </script>
-                                  
-                            </div>
-                        </div>
-                    </div>
+               
+                {% for p in prod %}
+                <div class="col-md-4 col-sm-12">
+                  {% if p.foto %}
+                  <img src=" {{ p.foto.url }} " class="img-rounded responsive-lista" alt="{{ p.foto.url }}" width="300" height="400">
+                  <center><a href="{% url 'detalle_producto' p.idProducto %}">
+                      <button class="pottt" type="button" class="btn btn-primary">{{ p.nombre_prod }}</button></a></center>
+                  <br>
+                  {%endif%}
                 </div>
+                {% endfor %}
             </div>
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
