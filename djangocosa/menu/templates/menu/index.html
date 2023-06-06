@@ -38,9 +38,6 @@
           <a class="nav-link" href="{% url 'ofertas' %}"><i class="fa-solid fa-money-bill-trend-up"></i> Ofertas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'Carrito' %}"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="{% url 'profile' %}"><i class="fa-solid fa-user"></i> Perfil</a>
         </li>
         <li class="nav-item">
@@ -54,15 +51,46 @@
             </i> Categorias</a>
         </li>
       </ul>
-      <ul class="navbar-nav ml-auto">
+    </div>
+    {% if user.is_authenticated %}
+
+
+        <ul class="nav navbar-nav navbar-right">
+
+
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ user.username }}
+              <span class="caret"></span></a>
+
+            <ul class="dropdown-menu">
+              <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-user"></span>Cerrar Sesión</a></li>
+              
+              <li >
+                <a href="{% url 'Carrito' %}">
+                  <span style="position:relative;" class="glyphicon glyphicon-shopping-cart"></span>carrito
+
+                </a>
+              </li>
+
+
+            </ul>
+            
+
+          </li>
+
+        </ul>
+        {% else %}
+
+        
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{% url 'create' %}"><span class="glyphicon glyphicon-user"></span>Mi cuenta</a></li><br>
+        </ul>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'login' %}"><i class="fa fa-user-alt"></i> Iniciar sesion</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'create' %}"><i class="fa fa-user-alt"></i> Registrarse</a>
-        </li>
-      </ul>
-    </div>
+
+        {% endif %}
+      </div>
   </nav>
   
 <div id="header">
