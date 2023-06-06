@@ -271,3 +271,10 @@ def Pesticidas(request):
 def profile(request):
     return render(request, 'menu/profile.html');
 
+def Cfertilizante(request, id):
+    producto = Producto.objects.get(idProducto = id)
+    contexto = {
+        "producto":producto
+    }
+    return render(request, 'menu/Cfertilizante.html', contexto)
+
