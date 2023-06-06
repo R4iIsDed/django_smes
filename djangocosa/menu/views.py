@@ -41,13 +41,34 @@ def create (request) :
 def login (request) :
     return render(request, 'menu/login.html');
 
-def create (request) :
-    return render (request, 'menu/create.html');
 
 def index(request) :
     return render (request, 'menu/index.html');
 
 def agregar_producto(request):
+    
+    form = createform()
+
+    if request.method == "POST":
+
+        form = createform(request.POST)
+
+        if form.is_valid():
+            
+            producto = Producto()
+
+            producto.nombre_prod = form.cleaned_data['nombre']
+            producto.descripcion = form.cleaned_data['descripcion']
+            producto.precio = form.cleaned_data['precio']
+            producto.imagen = form.cleaned_data['imagen']
+            producto.categoria = form.cleaned_data['categoria']
+            producto.stock = form.cleaned_data['stock']
+
+            producto.save()
+        
+        else:
+            print("tA MALO")
+
     return render(request, 'menu/agregar_producto.html');
 
 def banadmin(request):
