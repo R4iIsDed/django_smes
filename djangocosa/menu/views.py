@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth import authenticate,login, logout
 from django.contrib.auth.models import user
 from .models import Usuario
+from django.contrib import messages
 
+from rest_framework import viewsets
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -30,7 +32,12 @@ def lista_comunas(request):
         else:
             return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
 
-
+'''
+RestAPI con vista de administrador
+'''
+class ComunasViewSet(viewsets.ModelViewSet):
+    queryset = Comuna.objects.all()
+    serializer_class = comunaSerializer
 
 
 def create (request) :
