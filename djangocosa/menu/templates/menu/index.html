@@ -52,7 +52,7 @@
         </li>
       </ul>
     </div>
-    {% if user.is_authenticated %}
+    {% if User.is_authenticated %}
 
 
         <ul class="nav navbar-nav navbar-right">
@@ -83,11 +83,11 @@
 
         
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="{% url 'create' %}"><span class="glyphicon glyphicon-user"></span>Mi cuenta</a></li><br>
+          <a href="{% url 'create' %}"></span>Crear</a></li><br>
         </ul>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'login' %}"><i class="fa fa-user-alt"></i> Iniciar sesion</a>
-        </li>
+        <ul class="nav navbar-nav navbar-right">
+          <a class="nav-link" href="{% url 'login' %}"></i> Iniciar sesion</a>
+        </ul>
 
         {% endif %}
       </div>

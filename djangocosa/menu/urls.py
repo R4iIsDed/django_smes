@@ -3,14 +3,14 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
 from menu import views
-from .views import agregar_producto, banadmin, borrarcuenta, Cactus, Carrito, Categorias, changeforgoh, chNGE, compra_cactus1, compra_cactus2, compra_cactus3, compra_cactus4, compra_cactus5, compra_cactus6, Compra_fertilizante1, Compra_fertilizante2, Compra_fertilizante3, Compra_fertilizante4, Compra_fertilizante5, Compra_fertilizante6, Compra_maceta1, Compra_maceta2, Compra_maceta3, Compra_maceta4, Compra_maceta5, Compra_maceta6, Compra_Pago, Compra_pesticida1 ,Compra_pesticida2, Compra_pesticida3, compra_planta1, Compra_planta2, Compra_planta3, Compra_planta4, Compra_planta5, Compra_planta6, Contacto, create, editar_producto, eliminar_producto, Fertilizante, Flores, index, login, Maceteros, oferta1, oferta2, oferta3, oferta4, oferta5, oferta6, ofertas, Perfil_administrador, Pesticidas, profile, lista_comunas
+from .views import agregar_producto, banadmin, borrarcuenta, Cactus, Carrito, Categorias, changeforgoh, chNGE, compra_cactus1, compra_cactus2, compra_cactus3, compra_cactus4, compra_cactus5, compra_cactus6, Compra_fertilizante1, Compra_fertilizante2, Compra_fertilizante3, Compra_fertilizante4, Compra_fertilizante5, Compra_fertilizante6, Compra_maceta1, Compra_maceta2, Compra_maceta3, Compra_maceta4, Compra_maceta5, Compra_maceta6, Compra_Pago, Compra_pesticida1 ,Compra_pesticida2, Compra_pesticida3, compra_planta1, Compra_planta2, Compra_planta3, Compra_planta4, Compra_planta5, Compra_planta6, Contacto, create, editar_producto, eliminar_producto, Fertilizante, Flores, index, login, Maceteros, oferta1, oferta2, oferta3, oferta4, oferta5, oferta6, ofertas, Perfil_administrador, Pesticidas, profile, lista_comunas, Cfertilizante
 
 '''pip install coreapi
    pip install djangorestframework
-'''
+
 router = routers.DefaultRouter()
 router.register(r'Comunas', views.comunaSerializer)
-
+'''
 urlpatterns = [
     path('', index , name="index"),
     path('login', login , name="login"),
@@ -68,5 +68,6 @@ urlpatterns = [
     path('Pesticidas', Pesticidas, name="Pesticidas"),
     path('profile', profile, name="profile"),
     path('lista_comunas', lista_comunas, name="lista_comunas"),
+    path('Cfertilizante/<int:id>', Cfertilizante, name="Cfertilizante"),
     
 ]

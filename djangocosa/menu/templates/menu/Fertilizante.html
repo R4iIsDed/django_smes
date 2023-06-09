@@ -67,12 +67,10 @@
                
                 {% for p in prod %}
                 <div class="col-md-4 col-sm-12">
-                  {% if p.foto %}
                   <img src=" {{ p.foto.url }} " class="img-rounded responsive-lista" alt="{{ p.foto.url }}" width="300" height="400">
-                  <center><a href="{% url 'detalle_producto' p.idProducto %}">
+                  <center><a href="{% url 'Cfertilizante' p.idProducto %}">
                       <button class="pottt" type="button" class="btn btn-primary">{{ p.nombre_prod }}</button></a></center>
                   <br>
-                  {%endif%}
                 </div>
                 {% endfor %}
             </div>

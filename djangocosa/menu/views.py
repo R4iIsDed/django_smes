@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth import authenticate,login, logout
-from django.contrib.auth.models import user
-from .models import Usuario
+from django.contrib.auth.models import User
+from .models import Usuario, Producto 
 from django.contrib import messages
 
 from rest_framework import viewsets
@@ -33,7 +33,7 @@ def lista_comunas(request):
             return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
 
 '''
-RestAPI con vista de administrador
+RestAPI con vista de administrador(/docs)
 '''
 class ComunasViewSet(viewsets.ModelViewSet):
     queryset = Comuna.objects.all()
@@ -64,10 +64,10 @@ def create (request) :
 
             usuario.save()
 
-            user = user.objects.auth.create_user(username = 'email',
+            User = User.objects.auth.create_user(username = 'email',
                                                 email = 'email',
                                                 password = 'password')
-            user.save()
+            User.save()
         else:
             print("ta mala la wea")
 
@@ -78,7 +78,7 @@ def login (request) :
     u = request.POST['email']
     c = request.POST['password']
 
-    user = authenticate(username = u, password = c)
+    User = authenticate(username = u, password = c)
 
     if user is not None:
         if user.is_active:
