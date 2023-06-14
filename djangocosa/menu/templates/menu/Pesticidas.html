@@ -64,21 +64,21 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-4">
+                    {% for i in prod %}
                     <div class="card">
-                        <a href="{% url 'Compra_pesticida1' %}"><img class="card-img-top" style="width: 92%;" src="{% static 'img/pesticida1.png' %}" alt="Producto 1"></a>
+                        {%if p.foto%}
+                        <a href="{% url 'Cfertilizante' i.idProducto %}"><img class="card-img-top" style="width: 92%;" src="{% i.imagen.url %}" alt="Producto 1"></a>
+                        {%endif%}
                             <div class="card-body">
-                                <h5 class="card-title">Raid essentials</h5>
-                                <p class="card-text">360 ml de pesticida, tener cuidado con los niños cerca al momento de aplicarlo ya que es toxico</p>
-                                $3.500 <br><br>
-                                <button onclick="irAPagina()">Comprar ahora</button>
-                                <script>
-                                    function irAPagina() {
-                                      window.location.href = "{% url 'Carrito' %}";
-                                    }
-                                  </script>
+                                <h5 class="card-title">{% i.nombre_prod %}</h5>
+                                <p class="card-text">{% i.descripcion %}</p>
+                                {% i.precio %} <br><br>
                             </div>
+                           
                         </div>
+                        {% endfor %}
                     </div>
+                    
                     <div class="col-md-4">
                         <div class="card">
                             <a href="{% url 'Compra_pesticida2' %}"><img class="card-img-top" style="width: 70%;" src="{% static 'img/pesticida2.png' %}" alt="Producto 2"></a>

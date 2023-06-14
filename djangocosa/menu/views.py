@@ -96,15 +96,15 @@ def create (request) :
 
 
 def login (request) :
-    u = request.POST['email']
-    c = request.POST['password']
+    u = request.POST.get('email')
+    c = request.POST.get('password')
 
     User = authenticate(username = u, password = c)
 
-    if user is not None:
-        if user.is_active:
-            login(request,user)
-            return redirect('principal')
+    if User is not None:
+        if User.is_active:
+            login(request,User)
+            return redirect('index')
         else:
             messages.error(request,'Usuario Inactivo')
     else:
@@ -294,6 +294,10 @@ def Perfil_administrador(request):
     return render(request, 'menu/Perfil_administrador.html');
 
 def Pesticidas(request):
+    prod = Producto.objects.filter(categoria = 3)
+    contexto ={
+        "prod":prod
+        }
     return render(request, 'menu/Pesticidas.html');
 
 def profile(request):
