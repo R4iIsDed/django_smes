@@ -62,38 +62,29 @@ class ComunasViewSet(viewsets.ModelViewSet):
 
 
 def create (request) :
+    comp = request.POST.get('email')
+    if Usuario.objects.filter(correo=comp).exists():
+        messages.error(request,'Ya esta registrado')
+    else:
+        usuario = Usuario()
 
-    form = createform()
-
-    if request.method == "POST":
-
-        form = createform(request.POST)
-
-        if form.is_valid():
-            
-            usuario = Usuario()
-
-            usuario.Rut = form.cleaned_data['Rut']
-            usuario.name = form.cleaned_data['name']
-            usuario.apellido = form.cleaned_data['apellido']
-            usuario.telefono = form.cleaned_data['telefono']
-            usuario.correo = form.cleaned_data['email']
-            usuario.clave = form.cleaned_data['password']
-            usuario.pregunta = form.cleaned_data['security-question']
-            usuario.respuesta = form.cleaned_data['securityanswer']
-            usuario.rol = 0
-
-            usuario.save()
-
-            User = User.objects.auth.create_user(username = 'email',
-                                                email = 'email',
-                                                password = 'password')
-            User.save()
-        else:
-            print("ta mala la wea")
-
-        return render(request, 'menu/create.html');
-
+        usuario.Rut = request.POST.get('Rut')
+        usuario.name = request.POST.get('name')
+        usuario.apellido = request.POST.get('apellido')
+        usuario.telefono = request.POST.get('telefono')
+        usuario.correo = request.POST.get('email')
+        usuario.clave = request.POST.get('password')
+        usuario.pregunta_id = request.POST.get('security-question')
+        usuario.respuesta = request.POST.get('securityanswer')
+        usuario = Usuario(rol_id = '1')
+        usuario.save()
+        User = User.objects.auth.create_user(username = 'email',
+                                            email = 'email',
+                                          password = 'password')
+        User.save()
+        return redirect('login')
+    return render(request, 'menu/create.html');
+ 
 
 def login (request) :
     u = request.POST.get('email')
