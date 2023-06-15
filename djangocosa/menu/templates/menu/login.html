@@ -10,7 +10,7 @@
   <title>Inicio de Sesion</title>
   <style>
     body {
-      background-image: url("{% static 'img/bgus.webp' %}");
+      background-image: url("{% static 'menu/img/bgus.webp' %}");
       background-size: cover;
       height: 100vh;
     }
@@ -32,7 +32,7 @@
     <div class="card">
       <div class="card-body">
         <h2 class="card-title mb-4">Inicio sesion</h2>
-        <form id="login" action="{% url 'index' %}" method="post">
+        <form id="login" action="{% url 'login' %}" method="post">
           {%csrf_token%}
           <div class="form-group">
             <label for="email">correo</label>
@@ -42,11 +42,18 @@
             <label for="password">contraseña</label>
             <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
           </div>
+          {% if messages %}
+        <div>
+          {% for i in messages %}
+          <p style="color: red;">{{ i }}</p>
+          {% endfor %}
+        </div>
+        {% endif %}
           <input class="btn btn-primary" type="submit" value="Iniciar sesion" />
-          <a href="{% url 'Perfil_administrador' %}" class="btn btn-primary" >Iniciar como administrador</a>  
           <a href="{% url 'changeforgoh' %}" class="btn btn-primary">Olvide mi contraseña</a> 
         </form>
       </div>
+      
     </div>
   </div>
 
@@ -56,6 +63,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.min.js"></script>
-<script src="{% static 'javaScript/v_login.js' %}"></script>
+<script src="{% static 'menu/javaScript/v_login.js' %}"></script>
 </body>
 </html>
