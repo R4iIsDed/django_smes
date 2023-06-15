@@ -19,7 +19,7 @@ from .serializers import comunaSerializer
 @api_view(['GET','POST'])
 def lista_comunas(request):
     if request.method == 'GET':
-        comuna = comuna.objects.all()
+        comuna = Comuna.objects.all()
         serializer = comunaSerializer(comuna,many=True)
         return Response(serializer.data)
     
