@@ -60,12 +60,11 @@
               <span class="caret"></span></a>
 
             <ul class="dropdown-menu">
-              <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-user"></span>Cerrar Sesión</a></li>
+              <li><a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a></li>
               
               <li >
-                <a href="{% url 'Carrito' %}">
-                  <span style="position:relative;" class="glyphicon glyphicon-shopping-cart"></span>carrito
-
+                <a class="nav-link" href="{% url 'Carrito' %}">
+                  Carrito
                 </a>
               </li>
               <li class="nav-item">
@@ -83,7 +82,7 @@
 
         
         <ul class="nav navbar-nav navbar-right">
-          <a href="{% url 'create' %}"></span>Crear</a></li><br>
+          <a class="nav-link" href="{% url 'create' %}">Crear</a></li><br>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <a class="nav-link" href="{% url 'login' %}"></i> Iniciar sesion</a>

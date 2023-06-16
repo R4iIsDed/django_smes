@@ -6,10 +6,10 @@
   <title>Crear cuenta</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="{% static 'css/weaformulario.css' %}">
+  <link rel="stylesheet" href="{% static 'menu/css/weaformulario.css' %}">
   <style>
     body {
-      background-image: url("img/bgus.webp");
+      background-image: url("menu/img/bgus.webp");
       background-size: cover;
       height: 100vh;
     }
@@ -66,10 +66,9 @@
           <div class="form-group">
             <label for="security-question">Pregunta de seguridad</label>
             <select class="form-control" id="security-question" required>
-              <option value="0">--Eliga una pregunta--</option>
-              <option value="1">cual era tu apodo de pequeño?</option>
-              <option value="2">nombre de tu primera mascota?</option>
-              <option value="3">programa favorito de infancia?</option>
+            {% for e in Pregunta %} 
+              <option value="{% e.id_preg_id %}">{% e.nombre %}</option>
+            {% endfor %}
             </select>
           </div>
           <div class="form-group">
@@ -93,6 +92,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.min.js"></script>
-<script src="javaScript/v_create.js"></script>
+<script src="{% static 'menu/javaScript/v_create.js' %}"></script>
 
 </html>
