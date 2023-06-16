@@ -241,6 +241,9 @@ def Compra_planta6(request):
 def Contacto(request):
     return render(request, 'menu/Contacto.html');
 
+def create_html(request):
+    return render(request, 'menu/create.html')
+
 def editar_producto(request):
     return render(request, 'menu/editar_producto.html');
 
