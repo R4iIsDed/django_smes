@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Comuna
+from menu.models import Comuna
 
 class comunaSerializer(serializers.ModelSerializer):
     class Meta:

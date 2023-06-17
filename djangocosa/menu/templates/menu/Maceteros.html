@@ -12,63 +12,89 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link type="text/css" rel="stylesheet" href="{% static 'css/productos.css' %}">
-    <link type="text/css" rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-    <link rel="stylesheet" href="{% static 'css/arriba.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'menu/css/productos.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'menu/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'menu/css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'menu/css/arriba.css' %}">
     
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="z-index: 20;">
-        <a class="navbar-brand" href="{% url 'index' %}"> Se venden plantas¿</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'index' %}"><i class="fa fa-house"></i> Inicio</a>
-                </li>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="z-index: 20;">
+    <a class="navbar-brand" href="{% url 'index' %}"> Se venden plantas¿</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'index' %}"><i class="fa fa-house"></i> Inicio</a>
+        </li>
 
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'ofertas' %}"><i class="fa-solid fa-money-bill-trend-up"></i> Ofertas</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'Carrito' %}"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'profile' %}"><i class="fa-solid fa-user"></i> Perfil</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'Contacto' %}"><i>
-                      <class class="fa fa-contact-card"></class>
-                    </i> Contacto</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'Categorias' %}"><i>
-                      <class class="fa fa-book-bookmark"></class>
-                    </i> Categorias</a>
-                </li>
-              </ul>
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'login' %}"><i class="fa fa-user-alt"></i> Iniciar sesion</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'create' %}"><i class="fa fa-user-alt"></i> Registrarse</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-             </div>
-        </nav>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'ofertas' %}"><i class="fa-solid fa-money-bill-trend-up"></i> Ofertas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'Contacto' %}"><i>
+              <class class="fa fa-contact-card"></class>
+            </i> Contacto</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'categorias' %}"><i>
+              <class class="fa fa-book-bookmark"></class>
+            </i> Categorias</a>
+        </li>
+      </ul>
+    </div>
+    {% if User.is_authenticated %}
+
+
+        <ul class="nav navbar-nav navbar-right">
+
+
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ user.username }}
+              <span class="caret"></span></a>
+
+            <ul class="dropdown-menu">
+              <li><a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a></li>
+              
+              <li >
+                <a class="nav-link" href="{% url 'Carrito' %}">
+                  Carrito
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'profile' %}"><i class="fa-solid fa-user"></i> Perfil</a>
+              </li>
+
+
+            </ul>
+            
+
+          </li>
+
+        </ul>
+        {% else %}
+
+        
+        <ul class="nav navbar-nav navbar-right">
+          <a class="nav-link" href="{% url 'create_html' %}">Crear</a></li><br>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <a class="nav-link" href="{% url 'login' %}"></i> Iniciar sesion</a>
+        </ul>
+
+        {% endif %}
+      </div>
+  </nav>
     </body>
     <body>
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-4">
                     <div class="card">
-                      <a href="{% url 'Compra_maceta1' %}"><img class="card-img-top foto_especial img-fluid" src="{% static 'img/Maceta 1.jpg' %}" alt="Producto 1"></a>
+                      <a href="{% url 'Compra_maceta1' %}"><img class="card-img-top foto_especial img-fluid" src="{% static 'menu/img/Maceta 1.jpg' %}" alt="Producto 1"></a>
                             <div class="card-body">
                                 <h5 class="card-title">Maceta de plastico</h5>
                                 <p class="card-text">Las macetas de plástico protegen mejor a las plantas que los tiestos de barro, cristal o metal.</p>
@@ -84,7 +110,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="card">
-                          <a href="{% url 'Compra_maceta2' %}"><img class="card-img-top producto_tienta" src="{% static 'img/Maceta 2.jpg' %}" alt="Producto 2"></a>
+                          <a href="{% url 'Compra_maceta2' %}"><img class="card-img-top producto_tienta" src="{% static 'menu/img/Maceta 2.jpg' %}" alt="Producto 2"></a>
                             <div class="card-body">
                                 <h5 class="card-title">Maceta pequeña de plastico</h5>
                                 <p class="card-text">es una maceta mas pequeña que las comunes hechas de plastico</p>
@@ -100,7 +126,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="card">
-                          <a href="{% url 'Compra_maceta3' %}"><img class="card-img-top foto_especial" src="{% static 'img/Maceta 3.jpg' %}" alt="Producto 3"></a>
+                          <a href="{% url 'Compra_maceta3' %}"><img class="card-img-top foto_especial" src="{% static 'menu/img/Maceta 3.jpg' %}" alt="Producto 3"></a>
                             <div class="card-body">
                                 <h5 class="card-title">Maceta de greda</h5>
                                 <p class="card-text">La principal ventaja de las macetas de barro es que es un material muy poroso, por lo que las macetas fabricadas con él rezumarán agua constantemente, convirtiéndose en una opción ideal en los climas más lluviosos.</p>
@@ -116,7 +142,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="card">
-                          <a href="{% url 'Compra_maceta4' %}"><img class="card-img-top foto_especial" src="{% static 'img/Maceta 4.jpg' %}" alt="Producto 4"></a>
+                          <a href="{% url 'Compra_maceta4' %}"><img class="card-img-top foto_especial" src="{% static 'menu/img/Maceta 4.jpg' %}" alt="Producto 4"></a>
                             <div class="card-body">
                                 <h5 class="card-title">Maceta de plastico alta</h5>
                                 <p class="card-text">Este tipo de macetas es mas que nada utilizado en oficinas, restaurantes o casas mas lujosas</p>
@@ -132,7 +158,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="card">
-                          <a href="{% url 'Compra_maceta5' %}"><img class="card-img-top foto_especial" src="{% static 'img/Maceta5_chiquita.jpg' %}" alt="Producto 5"></a>
+                          <a href="{% url 'Compra_maceta5' %}"><img class="card-img-top foto_especial" src="{% static 'menu/img/Maceta5_chiquita.jpg' %}" alt="Producto 5"></a>
                             <div class="card-body">
                                 <h5 class="card-title">Maceta de ceramica</h5>
                                 <p class="card-text">Las macetas de cerámica se fabrican a partir de arcillas naturales y componentes minerales mezclados con aditivos de diferente naturaleza.</p>
@@ -148,7 +174,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="card">
-                          <a href="{% url 'Compra_maceta6' %}"><img class="card-img-top foto_especial" src="{% static 'img/Maceta 6.jpg' %}" alt="Producto 6"></a>
+                          <a href="{% url 'Compra_maceta6' %}"><img class="card-img-top foto_especial" src="{% static 'menu/img/Maceta 6.jpg' %}" alt="Producto 6"></a>
                             <div class="card-body">
                                 <h5 class="card-title">Maceta de arcilla</h5>
                                 <p class="card-text">Si se almacena correctamente, puede durar mucho tiempo, aunque los expertos artesanos no recomiendan guardar arcilla durante más de un año, si se desea obtener un trabajo de buena calidad.</p>

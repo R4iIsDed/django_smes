@@ -21,48 +21,80 @@
             crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
             integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-        <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+        <link rel="stylesheet" href="{% static 'menu/css/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'menu/css/navbar.css' %}">
     </head>
     <body>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark" style="z-index: 20;">
             <a class="navbar-brand" href="{% url 'index' %}"> Se venden plantas¿</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'index' %}"><i class="fa fa-house"></i> Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'ofertas' %}"><i class="fa-solid fa-money-bill-trend-up"></i> Ofertas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'carrito' %}"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'profile' %}"><i class="fa-solid fa-user"></i> Perfil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'contacto' %}"><i class="fa fa-contact-card"></i> Contacto</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'categorias' %}"><i class="fa fa-book-bookmark"></i> Categorias</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}"><i class="fa fa-user-alt"></i> Iniciar sesion</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'create' %}"><i class="fa fa-user-alt"></i> Registrarse</a>
-                    </li>
-                </ul>
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" href="{% url 'index' %}"><i class="fa fa-house"></i> Inicio</a>
+                </li>
+        
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'ofertas' %}"><i class="fa-solid fa-money-bill-trend-up"></i> Ofertas</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'Contacto' %}"><i>
+                      <class class="fa fa-contact-card"></class>
+                    </i> Contacto</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'categorias' %}"><i>
+                      <class class="fa fa-book-bookmark"></class>
+                    </i> Categorias</a>
+                </li>
+              </ul>
             </div>
-        </nav>
+            {% if User.is_authenticated %}
+        
+        
+                <ul class="nav navbar-nav navbar-right">
+        
+        
+                  <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ user.username }}
+                      <span class="caret"></span></a>
+        
+                    <ul class="dropdown-menu">
+                      <li><a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a></li>
+                      
+                      <li >
+                        <a class="nav-link" href="{% url 'Carrito' %}">
+                          Carrito
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'profile' %}"><i class="fa-solid fa-user"></i> Perfil</a>
+                      </li>
+        
+        
+                    </ul>
+                    
+        
+                  </li>
+        
+                </ul>
+                {% else %}
+        
+                
+                <ul class="nav navbar-nav navbar-right">
+                  <a class="nav-link" href="{% url 'create_html' %}">Crear</a></li><br>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <a class="nav-link" href="{% url 'login' %}"></i> Iniciar sesion</a>
+                </ul>
+        
+                {% endif %}
+              </div>
+          </nav>
         <!-- Header-->
         <header id="titulo_Carrito" class="py-5">
             <div class="container px-4 px-lg-5 my-5">
