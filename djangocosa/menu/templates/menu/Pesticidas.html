@@ -93,7 +93,7 @@
                 <div class="col-md-4">
                     <div class="card">
                         
-                        <a href="{% url 'Cfertilizante id=i.id_Prod' %}"><img class="card-img-top" style="width: 92%;" src="{{ i.imagen.url }}" alt="Producto 1"></a>
+                        <a href="{% url 'Cfertilizante' i.id_prod %}"><img class="card-img-top" style="width: 92%;" src="{{ i.imagen.url }}" alt="Producto 1"></a>
                         
                             <div class="card-body">
                                 <h5 class="card-title">{{ i.nombre_prod }}</h5>

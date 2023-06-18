@@ -36,7 +36,7 @@
             </i> Contacto</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'categorias' %}"><i>
+          <a class="nav-link" href="{% url 'Categorias' %}"><i>
               <class class="fa fa-book-bookmark"></class>
             </i> Categorias</a>
         </li>
@@ -87,103 +87,21 @@
 <body>
     <div class="container mt-5">
         <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <a href="{% url 'compra_planta1' %}"><img class="card-img-top" src="{% static 'menu/img/Flor1.jpg' %}" alt="Producto 1"></a>
-                        <div class="card-body">
-                            <h5 class="card-title">Gazanias</h5>
-                            <p class="card-text">La gazania es una planta de exterior ideal para principiantes, pues no requiere de muchos cuidados y está casi todo el año.</p>
-                            $6.000<br><br>
-                            <button onclick="irAPagina()">Comprar ahora</button>
-                            <script>
-                                function irAPagina() {
-                                  window.location.href = "{% url 'Carrito' %}";
-                                }
-                              </script>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <a href="{% url 'Compra_planta2' %}"><img class="card-img-top" src="{% static 'menu/img/Flor2.jpg' %}" alt="Producto 2"></a>
-                        <div class="card-body">
-                            <h5 class="card-title">Azaleas</h5>
-                            <p class="card-text">Por lo general, las azaleas prefieren ambientes frescos, pero no carentes de luz natural. De esta manera, en el caso de tenerlas dentro de nuestras casas deberemos asegurarnos de tenerlas en una zona ventilada y alejada de la calefacción.</p>
-                            $3.990<br><br>
-                            <button onclick="irAPagina()">Comprar ahora</button>
-                            <script>
-                                function irAPagina() {
-                                  window.location.href = "{% url 'Carrito' %}";
-                                }
-                              </script>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <a href="{% url 'Compra_planta3' %}"><img class="card-img-top" src="{% static 'menu/img/Flor3.jpg' %}" alt="Producto 3"></a>
-                        <div class="card-body">
-                            <h5 class="card-title">Crisantemo amarillo</h5>
-                            <p class="card-text">Mientras que algunas plantas necesitan buen tiempo, temperaturas elevadas y mucho sol, otras, como el Crisantemo, florecen con la llegada del otoño.</p>
-                            $7.000<br><br>
-                            <button onclick="irAPagina()">Comprar ahora</button>
-                            <script>
-                                function irAPagina() {
-                                  window.location.href = "{% url 'Carrito' %}";
-                                }
-                              </script>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <a href="{% url 'Compra_planta4' %}"><img class="card-img-top" src="{% static 'menu/img/Flor4.jpg' %}" alt="Producto 4"></a>
-                        <div class="card-body">
-                            <h5 class="card-title">Rosas naranjas</h5>
-                            <p class="card-text">Rosas naranjas, la flor perfecta para transmitir alegría. Las connotaciones de las rosas naranjas van en la misma línea que el propio color. Con ellas podemos transmitir alegría, simpatía e, incluso, poner en valor la amabilidad de la persona que las va a recibir.</p>
-                            $10.000<br><br>
-                            <button onclick="irAPagina()">Comprar ahora</button>
-                            <script>
-                                function irAPagina() {
-                                  window.location.href = "{% url 'Carrito' %}";
-                                }
-                              </script>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <a href="{% url 'Compra_planta5' %}"><img class="card-img-top" src="{% static 'menu/img/Flor5.jpg' %}" alt="Producto 5"></a>
-                        <div class="card-body">
-                            <h5 class="card-title">Tulipanes</h5>
-                            <p class="card-text">El tulipán es un símbolo de amor sincero. Es una flor increíblemente romántica que al regalarla expresas enamoramiento, pasión, amor incondicional, amor puro, etc.</p>
-                            $6.000<br><br>
-                            <button onclick="irAPagina()">Comprar ahora</button>
-                            <script>
-                                function irAPagina() {
-                                  window.location.href = "{% url 'Carrito' %}";
-                                }
-                              </script>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <a href="{% url 'Compra_planta6' %}"><img class="card-img-top" src="{% static 'menu/img/Flor6.jpg' %}" alt="Producto 6"></a>
-                        <div class="card-body">
-                            <h5 class="card-title">Amarilis</h5>
-                            <p class="card-text">Las flores son simplemente lo más hermoso de esta planta, De hecho, esta planta brilla con una sola flor espectacular, cuyo tamaño difícilmente puede ser superado.</p>
-                            $12.000 <br><br>
-                            <button onclick="irAPagina()">Comprar ahora</button>
-                            <script>
-                                function irAPagina() {
-                                  window.location.href = "{% url 'Carrito' %}";
-                                }
-                              </script>
-                              
-                        </div>
-                    </div>
-                </div>
+          {% for i in prod %}
+          <div class="col-md-4">
+              <div class="card">
+                  
+                  <a href="{% url 'Cfertilizante' i.id_prod %}"><img class="card-img-top" style="width: 92%;" src="{{ i.imagen.url }}" alt="Producto 1"></a>
+                  
+                      <div class="card-body">
+                          <h5 class="card-title">{{ i.nombre_prod }}</h5>
+                          <p class="card-text">{{ i.descripcion }}</p>
+                          {{ i.precio }} <br><br>
+                      </div>
+                     
+                  </div>
+              </div>
+              {% endfor %}
             </div>
         </div>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

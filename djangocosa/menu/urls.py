@@ -65,9 +65,9 @@ urlpatterns = [
     path('Perfil_administrador', Perfil_administrador, name="Perfil_administrador"),
     path('Pesticidas', Pesticidas, name="Pesticidas"),
     path('profile', profile, name="profile"),
-    path('Cfertilizante/<int:id>', Cfertilizante, name="Cfertilizante"),
+    path('Cfertilizante/<int:id>/', Cfertilizante, name='Cfertilizante'),
     path('create_admin', create_admin, name="create_admin")
-    
+
 ]
 
 urlpatterns +=[

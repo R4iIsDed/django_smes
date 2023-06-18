@@ -85,7 +85,9 @@ def borrarcuenta(request):
     return render(request, 'menu/borrarcuenta.html');
 
 def Cactus(request):
-    return render(request, 'menu/Cactus.html');
+    prod = Producto.objects.filter(categoria = 5)
+    return render(request, 'menu/Cactus.html', 
+                  {"prod":prod});
 
 def Carrito(request):
     return render(request, 'menu/Carrito.html');
@@ -201,10 +203,13 @@ def Fertilizante(request):
     return render(request, 'menu/Fertilizante.html', contexto);
 
 def Flores(request):
-    return render(request, 'menu/Flores.html');
+    prod = Producto.objects.filter(categoria = 5)
+    return render(request, 'menu/Flores.html', 
+                  {"prod":prod});
 
 def Maceteros(request):
-    return render(request, 'menu/Maceteros.html');
+    prod = Producto.objects.filter(categoria = 5)
+    return render(request, 'menu/Maceteros.html', {"prod":prod});
 
 def oferta1(request):
     return render(request, 'menu/oferta1.html');
@@ -239,7 +244,7 @@ def profile(request):
     return render(request, 'menu/profile.html');
 
 def Cfertilizante(request, id):
-    producto = Producto.objects.get(idProducto = id)
+    producto = Producto.objects.get(id_prod = id)
     contexto = {
         "producto":producto
     }
