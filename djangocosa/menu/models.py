@@ -4,14 +4,14 @@ from django.db import models
 
 class Region(models.Model):
     id_reg=models.AutoField(primary_key=True)
-    nombre=models.CharField(max_length=20)
+    nombre=models.CharField(max_length=50)
 
     def __str__(self) -> str:
         return self.nombre
 
 class Comuna(models.Model):
     id_com=models.AutoField(primary_key=True)
-    nombre=models.CharField(max_length=20)
+    nombre=models.CharField(max_length=50)
     region=models.ForeignKey(Region,on_delete=models.CASCADE)
 
     def __str__(self) -> str:
