@@ -43,6 +43,13 @@
           </div>
           <input class="submit" type="submit" value="Cambiar contraseña" />
         </form>
+        {% if messages %}
+        <div>
+          {% for i in messages %}
+          <p>{{ i }}</p>
+          {% endfor %}
+        </div>
+        {% endif %}
       </div>
     </div>
   </div>
