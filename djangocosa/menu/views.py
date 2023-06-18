@@ -73,10 +73,34 @@ def agregar_producto(request):
         producto.categoria = request.POST.get ('categoria')
         producto.stock = request.POST.get('stock')
         producto.save()
+        messages.success(request,'producto agregado')
     
     return render(request, 'menu/agregar_producto.html', {
         "pre" : pre
     })
+
+def editarProducto(request):
+    idP = request.POST['id']
+    nombreP = request.POST['nombre']
+    descripcionP = request.POST['descripcion']
+    precioP = request.POST['precio']
+    stockP = request.POST['stock']
+    imagenP = request.POST['imagen']
+    categoriaP = request.POST['categoria']
+
+    producto = Producto.objects.get(id_prod = idP)
+    producto.nombre_prod = nombreP
+    producto.descripcion = descripcionP
+    producto.precio = precioP
+    producto.stock = stockP
+    producto.imagen = imagenP
+    registroCategoria = Categoria.objects.get(id_categoria = categoriaP)
+    producto.categoria = registroCategoria
+
+    producto.save()
+    messages.success(request,'producto actualizado')
+    return redirect('menu/editar_producto.html')
+
 
 def banadmin(request):
     return render(request, 'menu/banadmin.html');

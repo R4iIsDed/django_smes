@@ -29,27 +29,28 @@
                 <input type="text" id="codigo" name="codigo">
                 <button id="btn-editar">Editar</button>
 
-                <form action="" method="POST" id="formulario-edicion">
+                <form action="{% 'editarProducto' %}" method="POST" enctype="multipart/form-data" id="formulario-edicion">
+                    {% csrf_token %}
                     <div class="form">
                         <div class="grupo">
                             <label for="codigo">Nuevo código del producto:</label>
-                            <input type="text" id="codi go" name="codigo" style="margin-left: 10%;"><span class="barra" required></span><br>
+                            <input type="text" id="idP" name="idP" value="{{producto.id_prod}}" style="margin-left: 10%;"><span class="barra" required></span><br>
                         </div>
                         <div class="grupo">
                             <label for="nombre">Nuevo nombre del producto:</label>
-                            <input type="text" id="nombre" name="nombre" style="margin-left: 9.5%;"><br>
+                            <input type="text" id="nombreP" name="nombreP" value="{{producto.nombre_prod}}" style="margin-left: 9.5%;"><br>
                         </div>
                         <div class="grupo">
                             <label for="descripcion">Nueva descripción:</label>
-                            <textarea id="descripcion" name="descripcion" style="margin-left: 16.2%;"></textarea><br>
+                            <textarea id="descripcionP" name="descripcionP" value="{{producto.descripcion}}" style="margin-left: 16.2%;"></textarea><br>
                         </div>
                         <div class="grupo">
                             <label for="precio">Nuevo precio:</label>
-                            <input type="number" id="precio" name="precio" style="margin-left: 19.8%;"><br>
+                            <input type="number" id="precioP" name="precioP" value="{{producto.precio}}" style="margin-left: 19.8%;"><br>
                         </div>
                         <div class="grupo">
                             <label for="imagen">Nueva imagen:</label><br>
-                            <input type="file" id="imagen" name="imagen"><br>
+                            <input type="file" id="imagenP" name="imagenP" value="{{producto.imagen}}"><br>
                         </div>
                         <button type="submit" style="margin-left: 30%; margin-top: 5%;">Guardar cambios</button>
                     </div>
