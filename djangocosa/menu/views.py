@@ -194,7 +194,14 @@ def editar_producto(request):
     return render(request, 'menu/editar_producto.html');
 
 def eliminar_producto(request):
-    return render(request, 'menu/eliminar_producto.html');
+    producto = Producto.objects.all()
+    contexto = {
+        "pre":producto
+    }
+    erase = request.POST.get('prod')
+    elimi = Producto.objects.get(id_prod = erase)
+    elimi.delete()
+    return render(request, 'menu/eliminar_producto.html', contexto);
 
 def Fertilizante(request):
     prod = Producto.objects.filter(categoria = 5)

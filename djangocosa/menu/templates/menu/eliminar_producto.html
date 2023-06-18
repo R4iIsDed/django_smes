@@ -26,9 +26,14 @@
             <div class="card-body">
                 <h3 class="card-title">Eliminar producto</h3>
                 <form action="" method="POST" id="form">
-                    <label for="codigo">Ingresa el código del producto</label>
-                    <input type="text" id="codigo" name="codigo"><br>
-                    <input class="btn btn-primary" type="submit" value="Eliminar">
+                    <select class="form-control" id="prod" name="prod">
+                        <option value="">--Eliga un producto--</option>
+                        {% for e in pre %} 
+                            <option value="{{ e.id_prod }}">{{ e.nombre }}</option>
+                        {% endfor %}
+                      
+                    </select>
+                    <input class="btn btn-primary" type="submit" value="Eliminar producto" />
                 </form>
             </div>
         </div>
