@@ -93,12 +93,12 @@
                     {% for i in prod %}
                     <div class="card">
                         {%if p.foto%}
-                        <a href="{% url 'Cfertilizante' i.idProducto %}"><img class="card-img-top" style="width: 92%;" src="{% i.imagen.url %}" alt="Producto 1"></a>
+                        <a href="{% url 'Cfertilizante' i.idProducto %}"><img class="card-img-top" style="width: 92%;" src="{{ i.imagen.url }}" alt="Producto 1"></a>
                         {%endif%}
                             <div class="card-body">
-                                <h5 class="card-title">{% i.nombre_prod %}</h5>
-                                <p class="card-text">{% i.descripcion %}</p>
-                                {% i.precio %} <br><br>
+                                <h5 class="card-title">{{ i.nombre_prod }}</h5>
+                                <p class="card-text">{{ i.descripcion }}</p>
+                                {{ i.precio }} <br><br>
                             </div>
                            
                         </div>

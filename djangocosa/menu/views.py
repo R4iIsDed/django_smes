@@ -8,7 +8,7 @@ from django.contrib import messages
 # Create your views here.
 
 
-def create (request) :
+def create_html (request) :
     pre = Pregunta.objects.all()
     {
         "pre":pre
@@ -196,8 +196,6 @@ def Compra_planta6(request):
 def Contacto(request):
     return render(request, 'menu/Contacto.html');
 
-def create_html(request):
-    return render(request, 'menu/create.html')
 
 def editar_producto(request):
     return render(request, 'menu/editar_producto.html');
