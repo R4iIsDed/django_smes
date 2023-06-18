@@ -40,7 +40,7 @@ class Usuario(models.Model):
     correo=models.CharField(max_length=50)
     clave=models.CharField(max_length=20)
     rol=models.ForeignKey(Rol,on_delete=models.CASCADE)
-    pregunta=models.ForeignKey(Pregunta,on_delete=models.CASCADE)
+    pregunta=models.ForeignKey(Pregunta,on_delete=models.CASCADE, null=True)
     respuesta=models.CharField(max_length=20)
 
     def __str__(self) -> str:

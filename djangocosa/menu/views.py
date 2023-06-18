@@ -2,35 +2,43 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth import authenticate,login, logout
 from django.contrib.auth.models import User
-from .models import Usuario, Producto 
+from .models import Usuario, Producto , Pregunta
 from django.contrib import messages
 
 # Create your views here.
 
 
 def create (request) :
+    pre = Pregunta.objects.all()
+    {
+        "pre":pre
+        }
     comp = request.POST.get('email')
-    if Usuario.objects.filter(correo=comp).exists():
-        messages.error(request,'Ya esta registrado')
-    else:
-        usuario = Usuario()
+    if request.method == "POST":
+        if Usuario.objects.filter(correo=comp).exists():
+            messages.error(request,'Ya esta registrado')
+        else:
+            usuario = Usuario()
 
-        usuario.Rut = request.POST.get('Rut')
-        usuario.name = request.POST.get('name')
-        usuario.apellido = request.POST.get('apellido')
-        usuario.telefono = request.POST.get('telefono')
-        usuario.correo = request.POST.get('email')
-        usuario.clave = request.POST.get('password')
-        usuario.pregunta_id = request.POST.get('security-question')
-        usuario.respuesta = request.POST.get('securityanswer')
-        usuario = Usuario(rol_id = '1')
-        usuario.save()
-        User = User.objects.auth.create_user(username = 'email',
-                                            email = 'email',
-                                          password = 'password')
-        User.save()
-        return redirect('login')
-    return render(request, 'menu/create.html');
+            usuario.rut = request.POST.get('Rut')
+            usuario.nombres = request.POST.get('name')
+            usuario.apellidos = request.POST.get('apellido')
+            usuario.telefono = request.POST.get('telefono')
+            usuario.correo = request.POST.get('email')
+            usuario.clave = request.POST.get('password')
+            usuario.pregunta = request.POST.get('security-question')
+            usuario.respuesta = request.POST.get('securityanswer')
+            usuario = Usuario(rol_id = '1')
+            if 1==1 :
+                usuario.save()
+            User = User.objects.auth.create_user(username = 'email',
+                                                email = 'email',
+                                              password = 'password')
+            if 1==1 : 
+                User.save()
+                return redirect('login')
+    return render(request, 'menu/create.html', 
+                    {"pre" : pre});
  
 
 def login (request) :
@@ -239,7 +247,7 @@ def Pesticidas(request):
     contexto ={
         "prod":prod
         }
-    return render(request, 'menu/Pesticidas.html');
+    return render(request, 'menu/Pesticidas.html', contexto);
 
 def profile(request):
     return render(request, 'menu/profile.html');

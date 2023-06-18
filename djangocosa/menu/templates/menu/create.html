@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="{% static 'menu/css/weaformulario.css' %}">
   <style>
     body {
-      background-image: url("menu/img/bgus.webp");
+      background-image: url("{% static 'menu/img/bgus.webp' %}");
       background-size: cover;
       height: 100vh;
     }
@@ -65,9 +65,9 @@
           </div>
           <div class="form-group">
             <label for="security-question">Pregunta de seguridad</label>
-            <select class="form-control" id="security-question" required>
-            {% for e in Pregunta %} 
-              <option value="{% e.id_preg_id %}">{% e.nombre %}</option>
+            <select class="form-control" id="security-question">
+            {% for e in pre %} 
+              <option value="{{ e.id_preg }}">{{ e.nombre }}</option>
             {% endfor %}
             </select>
           </div>
