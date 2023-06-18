@@ -42,19 +42,20 @@ def create_html (request) :
  
 
 def login (request) :
-    u = request.POST.get('email')
-    c = request.POST.get('password')
+    if request.method == "POST":
+        u = request.POST.get('email')
+        c = request.POST.get('password')
 
-    User = authenticate(username = u, password = c)
+        User = authenticate(username = u, password = c)
 
-    if User is not None:
-        if User.is_active:
-            login(request,User)
-            return redirect('index')
+        if User is not None:
+            if User.is_active:
+                login(request,User)
+                return redirect('index')
+            else:
+                messages.error(request,'Usuario Inactivo')
         else:
-            messages.error(request,'Usuario Inactivo')
-    else:
-        messages.error(request,'Usuario y/o contraseña incorrecta')
+            messages.error(request,'Usuario y/o contraseña incorrecta')
 
     return render(request, 'menu/login.html');
 
@@ -109,7 +110,9 @@ def borrarcuenta(request):
     return render(request, 'menu/borrarcuenta.html');
 
 def Cactus(request):
-    return render(request, 'menu/Cactus.html');
+    prod = Producto.objects.filter(categoria = 3)
+    return render(request, 'menu/Cactus.html', 
+                  {"prod":prod});
 
 def Carrito(request):
     return render(request, 'menu/Carrito.html');
@@ -215,20 +218,30 @@ def editar_producto(request):
     return render(request, 'menu/editar_producto.html');
 
 def eliminar_producto(request):
-    return render(request, 'menu/eliminar_producto.html');
+    producto = Producto.objects.all()
+    contexto = {
+        "pre":producto
+    }
+    erase = request.POST.get('prod')
+    elimi = Producto.objects.get(id_prod = erase)
+    elimi.delete()
+    return render(request, 'menu/eliminar_producto.html', contexto);
 
 def Fertilizante(request):
-    prod = Producto.objects.filter(categoria = 4)
+    prod = Producto.objects.filter(categoria = 5)
     contexto ={
         "prod":prod
         }
     return render(request, 'menu/Fertilizante.html', contexto);
 
 def Flores(request):
-    return render(request, 'menu/Flores.html');
+    prod = Producto.objects.filter(categoria = 1)
+    return render(request, 'menu/Flores.html', 
+                  {"prod":prod});
 
 def Maceteros(request):
-    return render(request, 'menu/Maceteros.html');
+    prod = Producto.objects.filter(categoria = 4)
+    return render(request, 'menu/Maceteros.html', {"prod":prod});
 
 def oferta1(request):
     return render(request, 'menu/oferta1.html');
@@ -255,7 +268,7 @@ def Perfil_administrador(request):
     return render(request, 'menu/Perfil_administrador.html');
 
 def Pesticidas(request):
-    prod = Producto.objects.filter(categoria = 5)
+    prod = Producto.objects.filter(categoria = 2)
     return render(request, 'menu/Pesticidas.html', 
                   {"prod":prod});
 
@@ -263,7 +276,7 @@ def profile(request):
     return render(request, 'menu/profile.html');
 
 def Cfertilizante(request, id):
-    producto = Producto.objects.get(idProducto = id)
+    producto = Producto.objects.get(id_prod = id)
     contexto = {
         "producto":producto
     }

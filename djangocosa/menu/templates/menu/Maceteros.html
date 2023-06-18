@@ -40,7 +40,7 @@
             </i> Contacto</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'categorias' %}"><i>
+          <a class="nav-link" href="{% url 'Categorias' %}"><i>
               <class class="fa fa-book-bookmark"></class>
             </i> Categorias</a>
         </li>
@@ -92,103 +92,21 @@
     <body>
         <div class="container mt-5">
             <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                      <a href="{% url 'Compra_maceta1' %}"><img class="card-img-top foto_especial img-fluid" src="{% static 'menu/img/Maceta 1.jpg' %}" alt="Producto 1"></a>
-                            <div class="card-body">
-                                <h5 class="card-title">Maceta de plastico</h5>
-                                <p class="card-text">Las macetas de plástico protegen mejor a las plantas que los tiestos de barro, cristal o metal.</p>
-                                $2.500 <br><br>
-                                <button onclick="irAPagina()">Comprar ahora</button>
-                                <script>
-                                    function irAPagina() {
-                                      window.location.href = "{% url 'Carrito' %}";
-                                    }
-                                  </script>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                          <a href="{% url 'Compra_maceta2' %}"><img class="card-img-top producto_tienta" src="{% static 'menu/img/Maceta 2.jpg' %}" alt="Producto 2"></a>
-                            <div class="card-body">
-                                <h5 class="card-title">Maceta pequeña de plastico</h5>
-                                <p class="card-text">es una maceta mas pequeña que las comunes hechas de plastico</p>
-                                $1.000 <br><br>
-                                <button onclick="irAPagina()">Comprar ahora</button>
-                                <script>
-                                    function irAPagina() {
-                                      window.location.href = "{% url 'Carrito' %}";
-                                    }
-                                  </script>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                          <a href="{% url 'Compra_maceta3' %}"><img class="card-img-top foto_especial" src="{% static 'menu/img/Maceta 3.jpg' %}" alt="Producto 3"></a>
-                            <div class="card-body">
-                                <h5 class="card-title">Maceta de greda</h5>
-                                <p class="card-text">La principal ventaja de las macetas de barro es que es un material muy poroso, por lo que las macetas fabricadas con él rezumarán agua constantemente, convirtiéndose en una opción ideal en los climas más lluviosos.</p>
-                                $8.500 <br><br>
-                                <button onclick="irAPagina()">Comprar ahora</button>
-                                <script>
-                                    function irAPagina() {
-                                      window.location.href = "{% url 'Carrito' %}";
-                                    }
-                                  </script>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                          <a href="{% url 'Compra_maceta4' %}"><img class="card-img-top foto_especial" src="{% static 'menu/img/Maceta 4.jpg' %}" alt="Producto 4"></a>
-                            <div class="card-body">
-                                <h5 class="card-title">Maceta de plastico alta</h5>
-                                <p class="card-text">Este tipo de macetas es mas que nada utilizado en oficinas, restaurantes o casas mas lujosas</p>
-                                $7.000 <br><br>
-                                <button onclick="irAPagina()">Comprar ahora</button>
-                                <script>
-                                    function irAPagina() {
-                                      window.location.href = "{% url 'Carrito' %}";
-                                    }
-                                  </script>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                          <a href="{% url 'Compra_maceta5' %}"><img class="card-img-top foto_especial" src="{% static 'menu/img/Maceta5_chiquita.jpg' %}" alt="Producto 5"></a>
-                            <div class="card-body">
-                                <h5 class="card-title">Maceta de ceramica</h5>
-                                <p class="card-text">Las macetas de cerámica se fabrican a partir de arcillas naturales y componentes minerales mezclados con aditivos de diferente naturaleza.</p>
-                                $7.500 <br><br>
-                                <button onclick="irAPagina()">Comprar ahora</button>
-                                <script>
-                                    function irAPagina() {
-                                      window.location.href = "{% url 'Carrito' %}";
-                                    }
-                                  </script>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                          <a href="{% url 'Compra_maceta6' %}"><img class="card-img-top foto_especial" src="{% static 'menu/img/Maceta 6.jpg' %}" alt="Producto 6"></a>
-                            <div class="card-body">
-                                <h5 class="card-title">Maceta de arcilla</h5>
-                                <p class="card-text">Si se almacena correctamente, puede durar mucho tiempo, aunque los expertos artesanos no recomiendan guardar arcilla durante más de un año, si se desea obtener un trabajo de buena calidad.</p>
-                                $4.000 <br><br>
-                                <button onclick="irAPagina()">Comprar ahora</button>
-                                <script>
-                                    function irAPagina() {
-                                      window.location.href = "{% url 'Carrito' %}";
-                                    }
-                                  </script>
-                                  
-                            </div>
-                        </div>
-                    </div>
+              {% for i in prod %}
+              <div class="col-md-4">
+                  <div class="card">
+                      
+                      <a href="{% url 'Cfertilizante' i.id_prod %}"><img class="card-img-top" style="width: 92%;" src="{{ i.imagen.url }}" alt="Producto 1"></a>
+                      
+                          <div class="card-body">
+                              <h5 class="card-title">{{ i.nombre_prod }}</h5>
+                              <p class="card-text">{{ i.descripcion }}</p>
+                              ${{ i.precio }} <br><br>
+                          </div>
+                         
+                      </div>
+                  </div>
+                  {% endfor %}
                 </div>
             </div>
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
