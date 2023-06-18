@@ -5,6 +5,7 @@ from rest_framework import routers
 from menu import views
 from .views import agregar_producto, banadmin, borrarcuenta, Cactus, create_html, Carrito, Categorias, changeforgoh, chNGE, compra_cactus1, compra_cactus2, compra_cactus3, compra_cactus4, compra_cactus5, compra_cactus6, Compra_fertilizante1, Compra_fertilizante2, Compra_fertilizante3, Compra_fertilizante4, Compra_fertilizante5, Compra_fertilizante6, Compra_maceta1, Compra_maceta2, Compra_maceta3, Compra_maceta4, Compra_maceta5, Compra_maceta6, Compra_Pago, Compra_pesticida1 ,Compra_pesticida2, Compra_pesticida3, compra_planta1, Compra_planta2, Compra_planta3, Compra_planta4, Compra_planta5, Compra_planta6, Contacto, editar_producto, eliminar_producto, Fertilizante, Flores, index, login, Maceteros, oferta1, oferta2, oferta3, oferta4, oferta5, oferta6, ofertas, Perfil_administrador, Pesticidas, profile, Cfertilizante
 from django.urls.conf import re_path
+from .views import create_admin
 from django.views.static import serve
 from django.conf import settings
 
@@ -65,6 +66,7 @@ urlpatterns = [
     path('Pesticidas', Pesticidas, name="Pesticidas"),
     path('profile', profile, name="profile"),
     path('Cfertilizante/<int:id>', Cfertilizante, name="Cfertilizante"),
+    path('create_admin', create_admin, name="create_admin")
     
 ]
 

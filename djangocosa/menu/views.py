@@ -204,7 +204,7 @@ def eliminar_producto(request):
     return render(request, 'menu/eliminar_producto.html');
 
 def Fertilizante(request):
-    prod = Producto.objects.filter(categoria = 3)
+    prod = Producto.objects.filter(categoria = 4)
     contexto ={
         "prod":prod
         }
@@ -241,11 +241,9 @@ def Perfil_administrador(request):
     return render(request, 'menu/Perfil_administrador.html');
 
 def Pesticidas(request):
-    prod = Producto.objects.filter(categoria = 3)
-    contexto ={
-        "prod":prod
-        }
-    return render(request, 'menu/Pesticidas.html', contexto);
+    prod = Producto.objects.filter(categoria = 5)
+    return render(request, 'menu/Pesticidas.html', 
+                  {"prod":prod});
 
 def profile(request):
     return render(request, 'menu/profile.html');
@@ -257,3 +255,35 @@ def Cfertilizante(request, id):
     }
     return render(request, 'menu/Cfertilizante.html', contexto)
 
+def create_admin (request) :
+    pre = Pregunta.objects.all()
+    {
+        "pre":pre
+        }
+    comp = request.POST.get('email')
+    if request.method == "POST":
+        if Usuario.objects.filter(correo=comp).exists():
+            messages.error(request,'Ya esta registrado')
+        else:
+            usuario = Usuario()
+
+            usuario.rut = request.POST.get('Rut')
+            usuario.nombres = request.POST.get('name')
+            usuario.apellidos = request.POST.get('apellido')
+            usuario.telefono = request.POST.get('telefono')
+            usuario.correo = request.POST.get('email')
+            usuario.clave = request.POST.get('password')
+            usuario.pregunta = request.POST.get('security-question')
+            usuario.respuesta = request.POST.get('securityanswer')
+            usuario = Usuario(rol_id = '2')
+            if 1==1 :
+                usuario.save()
+            User = User.objects.auth.create_user(username = 'email',
+                                                email = 'email',
+                                              password = 'password')
+            User.is_staff=True
+            if 1==1 : 
+                User.save()
+                return redirect('login')
+    return render(request, 'menu/create.html', 
+                    {"pre" : pre});

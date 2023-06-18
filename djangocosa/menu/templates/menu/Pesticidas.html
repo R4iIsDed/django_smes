@@ -37,7 +37,7 @@
                 </i> Contacto</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'categorias' %}"><i>
+              <a class="nav-link" href="{% url 'Categorias' %}"><i>
                   <class class="fa fa-book-bookmark"></class>
                 </i> Categorias</a>
             </li>
@@ -89,12 +89,12 @@
     <body>
         <div class="container mt-5">
             <div class="row">
+              {% for i in prod %}
                 <div class="col-md-4">
-                    {% for i in prod %}
                     <div class="card">
-                        {%if p.foto%}
-                        <a href="{% url 'Cfertilizante' i.idProducto %}"><img class="card-img-top" style="width: 92%;" src="{{ i.imagen.url }}" alt="Producto 1"></a>
-                        {%endif%}
+                        
+                        <a href="{% url 'Cfertilizante id=i.id_Prod' %}"><img class="card-img-top" style="width: 92%;" src="{{ i.imagen.url }}" alt="Producto 1"></a>
+                        
                             <div class="card-body">
                                 <h5 class="card-title">{{ i.nombre_prod }}</h5>
                                 <p class="card-text">{{ i.descripcion }}</p>
@@ -102,41 +102,8 @@
                             </div>
                            
                         </div>
-                        {% endfor %}
                     </div>
-                    
-                    <div class="col-md-4">
-                        <div class="card">
-                            <a href="{% url 'Compra_pesticida2' %}"><img class="card-img-top" style="width: 70%;" src="{% static 'menu/img/pesticida2.png' %}" alt="Producto 2"></a>
-                            <div class="card-body">
-                                <h5 class="card-title">clorox antihongos</h5>
-                                <p class="card-text">rociar alrededor de la planta para que se efectue de una manera mas eficiente</p>
-                                $2.500 <br><br>
-                                <button onclick="irAPagina()">Comprar ahora</button>
-                                <script>
-                                    function irAPagina() {
-                                      window.location.href = "{% url 'Carrito' %}";
-                                    }
-                                  </script>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <a href="{% url 'Compra_pesticida3' %}"><img class="card-img-top" style="width: 70%;" src="{% static 'menu/img/pesticida3.png' %}" alt="Producto 3"></a>
-                            <div class="card-body">
-                                <h5 class="card-title">tanax insecticida polvo</h5>
-                                <p class="card-text">Tanax Insecticida Polvo, tiene una formula superactiva con acción inmediata y enérgica, matando al contacto insectos como: Hormigas, cucarachas, pulgas, polillas, chinches. etc.</p>
-                                $4.500 <br><br>
-                                <button onclick="irAPagina()">Comprar ahora</button>
-                                <script>
-                                    function irAPagina() {
-                                      window.location.href = "{% url 'Carrito' %}";
-                                    }
-                                  </script>                                  
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
