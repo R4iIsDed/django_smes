@@ -97,9 +97,30 @@ def Categorias(request):
     return render(request, 'menu/categorias.html');
 
 def changeforgoh(request):
-    return render(request, 'menu/changeforgoh.html');
+    email = request.POST.get('email')
+    pre = Pregunta.objects.all()
+    if Usuario.objects.filter(correo=email).exists():
+        user = Usuario.objects.get(correo = email)
+        user2 = User.objects.get(username = user.correo)
+        pregun = request.POST.get('securityquestion')
+        if user.pregunta == pregun :
+            respues = request.POST.get('securityanswer')
+            if user.respuesta == respues :
+                new = request.POST.get('newpassword')
+                user.clave = new
+                user.save()
+                user2.password = new
+                user2.save()
+            else:
+                messages.error("la respuesta no es la correcta")
+        else:
+            messages.error("la pregunta de seguridad elegida no es la correcta")
+    else: 
+        messages.error("el correo no esta registrado")
+    return render(request, 'menu/changeforgoh.html', {'pre' : pre});
 
 def chNGE(request, id):
+    
     user = Usuario.objects.get(id_usuario = id)
     user2 = User.objects.get(username = user.correo)
     passs = request.POST.get('currentpassword')

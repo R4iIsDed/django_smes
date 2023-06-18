@@ -37,7 +37,9 @@
               <label for="securityquestion">Pregunta de seguridad</label>
               <select class="form-control" id="securityquestion" required>
                 <option value="">--Eliga una pregunta--</option>
-                
+                {% for e in pre %} 
+                 <option value="{{ e.id_preg }}">{{ e.nombre }}</option>
+                {% endfor %}  
               </select>
             </div>
             <div class="form-group">
@@ -55,6 +57,13 @@
             <input class="submit" type="submit" value="Cambiar contraseña" />
         </form>
       </div>
+      {% if messages %}
+        <div>
+          {% for i in messages %}
+          <p>{{ i }}</p>
+          {% endfor %}
+        </div>
+        {% endif %}
     </div>
   </div>
 </body>
