@@ -55,19 +55,14 @@
                             <label for="precio">Stock:</label>
                             <input type="number" id="stock" name="stock" style="margin-left: 19.8%;"><br>
                         </div>
-                        <div class="grupo">
-                            <label for="precio">Precio:</label>
-                            <input type="number" id="precio" name="precio" style="margin-left: 19.8%;"><br>
-                        </div>
                         <div class="form-group">
                             <label for="security-question">categoria</label>
-                            <select class="form-control" id="security-question" required>
-                              <option value="">--Eliga una pregunta--</option>
-                              <option value="1">Flores</option>
-                              <option value="2">Cactus</option>
-                              <option value="3">Maceteros</option>
-                              <option value="4">Fertilizantes</option>
-                              <option value="5">Pesticidas</option>
+                            <select class="form-control" id="categoria" name="categoria">
+                                <option value="">--Eliga una categoria--</option>
+                                {% for e in pre %} 
+                                    <option value="{{ e.id_categoria }}">{{ e.nombre_categoria }}</option>
+                                {% endfor %}
+                              
                             </select>
                           </div>
                         <button type="submit" style="margin-left: 30%; margin-top: 5%;">Agregar producto</button>

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth import authenticate,login, logout
 from django.contrib.auth.models import User
-from .models import Usuario, Producto , Pregunta
+from .models import Usuario, Producto , Pregunta, Categoria
 from django.contrib import messages
 
 # Create your views here.
@@ -63,30 +63,20 @@ def index(request) :
     return render (request, 'menu/index.html');
 
 def agregar_producto(request):
+    pre = Categoria.objects.all()
+    if request.method == "POST":      
+        producto = Producto()
+        producto.nombre_prod = request.POST.get('nombre')
+        producto.descripcion = request.POST.get('descripcion')
+        producto.precio = request.POST.get('precio')
+        producto.imagen = request.POST.get('imagen')
+        producto.categoria = request.POST.get ('categoria')
+        producto.stock = request.POST.get('stock')
+        producto.save()
     
-    form = createform()
-
-    if request.method == "POST":
-
-        form = createform(request.POST)
-
-        if form.is_valid():
-            
-            producto = Producto()
-
-            producto.nombre_prod = form.cleaned_data['nombre']
-            producto.descripcion = form.cleaned_data['descripcion']
-            producto.precio = form.cleaned_data['precio']
-            producto.imagen = form.cleaned_data['imagen']
-            producto.categoria = form.cleaned_data['categoria']
-            producto.stock = form.cleaned_data['stock']
-
-            producto.save()
-        
-        else:
-            print("tA MALO")
-
-    return render(request, 'menu/agregar_producto.html');
+    return render(request, 'menu/agregar_producto.html', {
+        "pre" : pre
+    })
 
 def banadmin(request):
     return render(request, 'menu/banadmin.html');
