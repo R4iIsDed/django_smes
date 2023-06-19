@@ -31,7 +31,7 @@
     <div class="card">
       <div class="card-body">
         <h3 class="card-title text-center">Crear cuenta</h3>
-        <form id="createform" action="{% url 'create_html' %}" method="post">
+        <form id="create" action="{% url 'create_html' %}" method="post" name="create">
           {% csrf_token %}
           <div class="form-group">
             <label for="Rut">Rut</label>
@@ -65,7 +65,8 @@
           </div>
           <div class="form-group">
             <label for="security-question">Pregunta de seguridad</label>
-            <select class="form-control" id="security-question">
+            <select class="form-control" id="security-question" name="security-question">
+              <option value=" ">eliga una opcion</option>
             {% for e in pre %} 
               <option value="{{ e.id_preg }}">{{ e.nombre }}</option>
             {% endfor %}
@@ -76,13 +77,13 @@
             <input type="text" class="form-control" id="securityanswer" name="securityanswer"
               placeholder="Ingrese la respuesta">
           </div>
-          {% if messages %}
-        <div>
-          {% for i in messages %}
-          <p>{{ i }}</p>
-          {% endfor %}
-        </div>
-        {% endif %}
+           {% if messages %}
+         <div>
+           {% for i in messages %}
+            <p>{{ i }}</p>
+            {% endfor %}
+         </div>
+          {% endif %}
           <input class="btn btn-primary" type="submit" value="Crear cuenta" />
         </form>
       </div>
@@ -93,5 +94,4 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.min.js"></script>
 <script src="{% static 'menu/javaScript/v_create.js' %}"></script>
-
 </html>

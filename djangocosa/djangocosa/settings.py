@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-&)*wuxjd26u1w1nffg(9n11m)&1yql)(_kvt0av-yh&09c5yp^
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+SESSION_COOKIE_AGE = 86400
+CARRITO_SESSION_ID = 'carrito'
 
 # Application definition
 
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'coreapi',
+    'carrito',
     'menu',
     'rest_comuna'
 ]
@@ -66,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'carrito.context_processors.cart',
             ],
         },
     },

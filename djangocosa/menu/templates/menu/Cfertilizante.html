@@ -52,35 +52,39 @@
         </li>
       </ul>
     </div>
-    {% if User.is_authenticated %}
+    {% if user.is_authenticated %}
 
 
-        <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right">
 
 
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ user.username }}
-              <span class="caret"></span></a>
+        <li class="dropdown">
+         <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ user.username }}
+            <span class="caret"></span></a>
 
-            <ul class="dropdown-menu">
-              <li><a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a></li>
-              
-              <li >
-                <a class="nav-link" href="{% url 'Carrito' %}">
-                  Carrito
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'profile' %}"><i class="fa-solid fa-user"></i> Perfil</a>
-              </li>
-
-
-            </ul>
+         <ul class="dropdown-menu">
+            {% if user.is_staff %}
+              <li><a href="{% url 'Perfil_admistrador' %}">Administración</a></li>
+            {% endif %}
+            <li><a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a></li>
+          
+          
             
+          
+            <li class="nav-item">
+             <a class="nav-link" href="{% url 'profile' %}"><i class="fa-solid fa-user"></i> Perfil</a>
+           </li>
 
-          </li>
 
-        </ul>
+          </ul>
+        
+
+        </li>
+
+      </ul>
+
+
+      {% include 'carrito/menu_cart.html'%}
         {% else %}
 
         
@@ -108,13 +112,21 @@
 
           </div>
           <p class="lead">{{producto.descripcion}}</p>
+          {% if user.is_authenticated %}
           <div class="d-flex">
             <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1"
               style="max-width: 3rem" />
-            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'Carrito' %}">Añadir al
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#"
+              hx-get="{% url 'add_to_cart' producto.id_prod %}"
+              hx-target="#menu_cart_button"
+              hx-swap="outerHTML"
+              >Añadir al
                 carrito</a></div>
             </button>
           </div>
+          {% else %}
+            <p>debe iniciar sesion para poder comprar</p>
+          {% endif %}
         </div>
       </div>
     </div>

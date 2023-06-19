@@ -1,11 +1,10 @@
 $(document).ready(function(e){
-    
     jQuery.validator.addMethod("noSpace", function(value, element) { 
         return value.indexOf(" ") < 0 && value != ""; 
       }, "No dejes espacios por favor");
     $.validator.addMethod('lowercasesymbols', function(value) {
     return value.match(/^[a-z\[!@# $%&*\/?=_.,:;\\\]"-]+$/);
-}, 'La contraseña debe contener solo caracteres minisculas y al menos un simbolo');
+    }, 'La contraseña debe contener solo caracteres minisculas y al menos un simbolo');
     $("#create").validate({
         errorClass: "error fail-alert",
 
@@ -49,10 +48,6 @@ $(document).ready(function(e){
                 required: true,
                 equalTo: "#password"
             },
-            address: {
-                required: true,
-                minlength: 8
-            },
             securityanswer: {
                 required: true,
                 minlength: 2,
@@ -60,6 +55,11 @@ $(document).ready(function(e){
             }
         },
         messages: {
+            Rut:{
+                required: " Ingrese su Rut ",
+                minlength: " El Rut debe tener 10 caracteres minimo ",
+                maxlenght: "el rut debe tener maximo 20 caracteres"
+            },
             name:{
                 required: " Ingrese su nombre ",
                 minlength: " El nombre debe tener minimo 5 caracteres "
@@ -68,10 +68,9 @@ $(document).ready(function(e){
                 required: " Ingrese su apellido ",
                 minlength: " El nombre debe tener minimo 5 caracteres "
             },
-            Rut:{
-                required: " Ingrese su Rut ",
-                minlength: " El Rut debe tener 10 caracteres minimo ",
-                maxlenght: "el rut debe tener maximo 20 caracteres"
+            telefono: {
+                required: "debe ingresar un numero de telefono",
+                minlength: "el numero de telefono debe tener al menos 5 caracteres"
             },
             email: {
                 required: " Ingrese su email ",
@@ -85,17 +84,12 @@ $(document).ready(function(e){
                 required: " Porfavor repita la nueva contraseña ",
                 equalTo: " Las contraseñas no coinciden "
             },
-            address: {
-                required: " Ingrese su direccion ",
-                minlength: " La direccion debe tener minimo 8 caracteres "
-            },
             securityanswer: {
                 required: " Ingrese la respuesta a su pregunta de seguridad ",
                 minlength: " La respuesta debe contener mas de 2 caracteres  "
             }
         }
     })
-    e.preventdefault();
 })
 
 

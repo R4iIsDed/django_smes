@@ -15,42 +15,37 @@ def create_html (request) :
         }
     comp = request.POST.get('email')
     if request.method == "POST":
-        if Usuario.objects.filter(correo=comp).exists():
+        if User.objects.filter(username=comp).exists():
             messages.error(request,'Ya esta registrado')
         else:
-            usuario = Usuario()
+            
+            user243 = Usuario(rut = (request.POST.get('Rut')), nombres = (request.POST.get('name')),
+                         apellidos = (request.POST.get('apellido')), telefono = (request.POST.get('telefono')),
+                         correo = (request.POST.get('email')), clave = (request.POST.get('password')),
+                         pregunta_id = (request.POST.get('security-question')), respuesta = (request.POST.get('securityanswer')),
+                         rol_id = '1')
+            user243.save()
 
-            usuario.rut = request.POST.get('Rut')
-            usuario.nombres = request.POST.get('name')
-            usuario.apellidos = request.POST.get('apellido')
-            usuario.telefono = request.POST.get('telefono')
-            usuario.correo = request.POST.get('email')
-            usuario.clave = request.POST.get('password')
-            usuario.pregunta = request.POST.get('security-question')
-            usuario.respuesta = request.POST.get('securityanswer')
-            usuario = Usuario(rol_id = '1')
-            if 1==1 :
-                usuario.save()
-            User = User.objects.auth.create_user(username = 'email',
-                                                email = 'email',
-                                              password = 'password')
-            if 1==1 : 
-                User.save()
-                return redirect('login')
+            user32 = User.objects.create_user(username = comp,
+                                                email = comp,
+                                              password = request.POST.get('password'))
+            
+            user32.save()
+            return redirect('login')
     return render(request, 'menu/create.html', 
                     {"pre" : pre});
  
 
-def login (request) :
+def login2 (request) :
     if request.method == "POST":
         u = request.POST.get('email')
         c = request.POST.get('password')
 
-        User = authenticate(username = u, password = c)
+        User = authenticate(request, username = u, password = c)
 
         if User is not None:
             if User.is_active:
-                login(request,User)
+                login(request, User)
                 return redirect('index')
             else:
                 messages.error(request,'Usuario Inactivo')
@@ -135,89 +130,10 @@ def chNGE(request, id):
         messages.ERROR('Su contrasena es incorrecta')
     return render(request, 'menu/chNGE.html');
 
-def compra_cactus1(request):
-    return render(request, 'menu/compra_cactus1.html');
-
-def compra_cactus2(request):
-    return render(request, 'menu/compra_cactus2.html');
-
-def compra_cactus3(request):
-    return render(request, 'menu/compra_cactus3.html');
-
-def compra_cactus4(request):
-    return render(request, 'menu/compra_cactus4.html');
-
-def compra_cactus5(request):
-    return render(request, 'menu/compra_cactus5.html');
-
-def compra_cactus6(request):
-    return render(request, 'menu/compra_cactus6.html');
-
-def Compra_fertilizante1(request):
-    return render(request, 'menu/Compra_fertilizante1.html');
-
-def Compra_fertilizante2(request):
-    return render(request, 'menu/Compra_fertilizante2.html');
-
-def Compra_fertilizante3(request):
-    return render(request, 'menu/Compra_fertilizante3.html');
-
-def Compra_fertilizante4(request):
-    return render(request, 'menu/Compra_fertilizante4.html');
-
-def Compra_fertilizante5(request):
-    return render(request, 'menu/Compra_fertilizante5.html');
-
-def Compra_fertilizante6(request):
-    return render(request, 'menu/Compra_fertilizante6.html');
-
-def Compra_maceta1(request):
-    return render(request, 'menu/Compra_maceta1.html');
-
-def Compra_maceta2(request):
-    return render(request, 'menu/Compra_maceta2.html');
-
-def Compra_maceta3(request):
-    return render(request, 'menu/Compra_maceta3.html');
-
-def Compra_maceta4(request):
-    return render(request, 'menu/Compra_maceta4.html');
-
-def Compra_maceta5(request):
-    return render(request, 'menu/Compra_maceta5.html');
-
-def Compra_maceta6(request):
-    return render(request, 'menu/Compra_maceta6.html');
 
 def Compra_Pago(request):
     return render(request, 'menu/Compra_Pago.html');
 
-def Compra_pesticida1(request):
-    return render(request, 'menu/Compra_pesticida1.html');
-
-def Compra_pesticida2(request):
-    return render(request, 'menu/Compra_pesticida2.html');
-
-def Compra_pesticida3(request):
-    return render(request, 'menu/Compra_pesticida3.html');
-
-def compra_planta1(request):
-    return render(request, 'menu/compra_planta1.html');
-
-def Compra_planta2(request):
-    return render(request, 'menu/Compra_planta2.html');
-
-def Compra_planta3(request):
-    return render(request, 'menu/Compra_planta3.html');
-
-def Compra_planta4(request):
-    return render(request, 'menu/Compra_planta4.html');
-
-def Compra_planta5(request):
-    return render(request, 'menu/Compra_planta5.html');
-
-def Compra_planta6(request):
-    return render(request, 'menu/Compra_planta6.html');
 
 def Contacto(request):
     return render(request, 'menu/Contacto.html');
@@ -273,25 +189,6 @@ def Flores(request):
 def Maceteros(request):
     prod = Producto.objects.filter(categoria = 4)
     return render(request, 'menu/Maceteros.html', {"prod":prod});
-
-def oferta1(request):
-    return render(request, 'menu/oferta1.html');
-
-def oferta2(request):
-    return render(request, 'menu/oferta2.html');
-
-def oferta3(request):
-    return render(request, 'menu/oferta3.html');
-
-def oferta4(request):
-    return render(request, 'menu/oferta4.html');
-
-def oferta5(request):
-    return render(request, 'menu/oferta5.html');
-
-def oferta6(request):
-    return render(request, 'menu/oferta6.html');
-
 def ofertas(request):
     return render(request, 'menu/ofertas.html');
 
@@ -345,3 +242,8 @@ def create_admin (request) :
                 return redirect('login')
     return render(request, 'menu/create.html', 
                     {"pre" : pre});
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')
