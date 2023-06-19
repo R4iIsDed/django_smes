@@ -29,7 +29,7 @@
                 <input type="text" id="codigo" name="codigo">
                 <button id="btn-editar">Editar</button>
 
-                <form action="{% 'editarProducto' %}" method="POST" enctype="multipart/form-data" id="formulario-edicion">
+                <form action="{% url 'editarProducto' %}" method="POST" enctype="multipart/form-data" id="formulario-edicion">
                     {% csrf_token %}
                     <div class="form">
                         <div class="grupo">
@@ -54,6 +54,7 @@
                         </div>
                         <button type="submit" style="margin-left: 30%; margin-top: 5%;">Guardar cambios</button>
                     </div>
+                    
                 </form>
             </div>
         </div>

@@ -8,11 +8,6 @@ $(document).ready(function(e){
         validClass: "valid success-alert",
 
         rules: {
-            codigo: {
-                required: true,
-                minlength: 6,
-                noSpace: true
-            },
             nombre: {
                 required: true,
                 minlength: 6,
@@ -32,10 +27,6 @@ $(document).ready(function(e){
             }
         },
         messages: {
-            codigo: {
-                required: "ingrese el codigo producto",
-                minlength: "el codigo producto debe tener minimo 6 caracteres",
-            },
             nombre: {
                 required: "ingrese nombre prodcuto",
                 minlength: "el nombre debe contar con al menos 6 caracteres",

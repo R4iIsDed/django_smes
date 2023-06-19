@@ -53,39 +53,35 @@
       </ul>
     </div>
     {% if user.is_authenticated %}
+      
+
+        <ul class="nav navbar-nav navbar-right">
 
 
-      <ul class="nav navbar-nav navbar-right">
-
-
-        <li class="dropdown">
-         <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ user.username }}
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="dropdown" href="#">{{ user.username }}
             <span class="caret"></span></a>
 
-         <ul class="dropdown-menu">
-            {% if user.is_staff %}
-              <li><a href="{% url 'Perfil_admistrador' %}">Administración</a></li>
-            {% endif %}
-            <li><a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a></li>
-          
-          
-            
-          
-            <li class="nav-item">
-             <a class="nav-link" href="{% url 'profile' %}"><i class="fa-solid fa-user"></i> Perfil</a>
-           </li>
+              {% if User.is_staff %}
+                <li><a href="{% url 'Perfil_admistrador' %}">Administración</a></li>
+              {% endif %}
+              <li><a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a></li>
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'profile' %}"><i class="fa-solid fa-user"></i> Perfil</a>
+              </li>
+              <LI>
+          {% include 'carrito/menu_cart.html'%}
+        </LI>
+            </ul>
+  
 
+        </ul>
 
-          </ul>
-        
-
-        </li>
-
-      </ul>
-
-
-      {% include 'carrito/menu_cart.html'%}
-        {% else %}
+    {% else %}
 
         
         <ul class="nav navbar-nav navbar-right">
@@ -98,6 +94,7 @@
         {% endif %}
       </div>
   </nav>
+  
   <!-- Product section-->
   <section class="py-5">
     <div class="container px-4 px-lg-5 my-5">

@@ -25,7 +25,8 @@
         <div class="card-md-sm-auto">
             <div class="card-body">
                 <h3 class="card-title">Eliminar producto</h3>
-                <form action="" method="POST" id="form">
+                <form action="{% url 'eliminar_producto' %}" method="POST" id="form">
+                    {% csrf_token %}
                     <select class="form-control" id="prod" name="prod">
                         <option value="">--Eliga un producto--</option>
                         {% for e in pre %} 

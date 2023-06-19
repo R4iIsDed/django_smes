@@ -66,11 +66,13 @@ def agregar_producto(request):
         producto.nombre_prod = request.POST.get('nombre')
         producto.descripcion = request.POST.get('descripcion')
         producto.precio = request.POST.get('precio')
-        producto.imagen = request.POST.get('imagen')
+        producto.imagen = request.POST.get('imagen') 
         producto.categoria = request.POST.get ('categoria')
         producto.stock = request.POST.get('stock')
         producto.save()
-    
+        messages.success(request, "producto agregado")
+    else:
+        messages.error(request, "uwu")
     return render(request, 'menu/agregar_producto.html', {
         "pre" : pre
     })
@@ -115,20 +117,20 @@ def changeforgoh(request):
         messages.error("el correo no esta registrado")
     return render(request, 'menu/changeforgoh.html', {'pre' : pre});
 
-def chNGE(request, id):
-    
-    user = Usuario.objects.get(id_usuario = id)
-    user2 = User.objects.get(username = user.correo)
-    passs = request.POST.get('currentpassword')
-    npass = request.POST.get('newpassword')
-    if user.clave == passs and user2.password == passs :
-        user.clave = passs
-        user2.password = passs
-        user.save()
-        user2.save()
-        return redirect('logout')
-    else:
-        messages.ERROR('Su contrasena es incorrecta')
+def chNGE(request ):
+    if Usuario.objects.filter(correo=User.username).exists():
+        user2 = User.objects.get(username = User.username)
+        user = Usuario.objects.get(correo = user2.username)
+        passs = request.POST.get('currentpassword')
+        npass = request.POST.get('newpassword')
+        if user.clave == passs and user2.password == passs :
+            user.clave = passs
+            user2.password = passs
+            user.save()
+            user2.save()
+            return redirect('logout')
+        else:
+            messages.ERROR('Su contrasena es incorrecta')
     return render(request, 'menu/chNGE.html');
 
 
@@ -144,25 +146,28 @@ def editar_producto(request):
 
 
 def editarProducto(request):
-    idP = request.POST['id']
-    nombreP = request.POST['nombre']
-    descripcionP = request.POST['descripcion']
-    precioP = request.POST['precio']
-    stockP = request.POST['stock']
-    imagenP = request.POST['imagen']
-    categoriaP = request.POST['categoria']
+    idP = request.POST.get('id')
+    nombreP = request.POST.get('nombre')
+    descripcionP = request.POST.get('descripcion')
+    precioP = request.POST.get('precio')
+    stockP = request.POST.get('stock')
+    imagenP = request.POST.get('imagen')
+    categoriaP = request.POST.get('categoria')
+    if Producto.objects.filter(id_prod = idP).exists():
 
-    producto = Producto.objects.get(id_prod = idP)
-    producto.nombre_prod = nombreP
-    producto.descripcion = descripcionP
-    producto.precio = precioP
-    producto.stock = stockP
-    producto.imagen = imagenP
-    registroCategoria = Categoria.objects.get(id_categoria = categoriaP)
-    producto.categoria = registroCategoria
+        producto = Producto.objects.get(id_prod = idP)
+        producto.nombre_prod = nombreP
+        producto.descripcion = descripcionP
+        producto.precio = precioP
+        producto.stock = stockP
+        producto.imagen = imagenP
+        registroCategoria = Categoria.objects.filter(id_categoria = categoriaP)
+        producto.categoria = registroCategoria
 
-    producto.save()
-    messages.success(request,'producto actualizado')
+        producto.save()
+        messages.success(request,'producto actualizado')
+    else:
+        messages.error(request, "producto no existente")
     return render(request, 'menu/editar_producto.html');
 
 def eliminar_producto(request):
@@ -171,8 +176,12 @@ def eliminar_producto(request):
         "pre":producto
     }
     erase = request.POST.get('prod')
-    elimi = Producto.objects.get(id_prod = erase)
-    elimi.delete()
+    if Producto.objects.filter(id_prod = erase).exists():
+
+        elimi = Producto.objects.get(id_prod = erase)
+        elimi.delete()
+    else: 
+        print("no se loco")
     return render(request, 'menu/eliminar_producto.html', contexto);
 
 def Fertilizante(request):
@@ -194,7 +203,10 @@ def ofertas(request):
     return render(request, 'menu/ofertas.html');
 
 def Perfil_administrador(request):
-    return render(request, 'menu/Perfil_administrador.html');
+    wea = Usuario.objects.filter(correo = User.username)
+    return render(request, 'menu/Perfil_administrador.html', {
+        "wea" : wea
+    });
 
 def Pesticidas(request):
     prod = Producto.objects.filter(categoria = 2)
@@ -226,29 +238,23 @@ def create_admin (request) :
         }
     comp = request.POST.get('email')
     if request.method == "POST":
-        if Usuario.objects.filter(correo=comp).exists():
+        if User.objects.filter(username=comp).exists():
             messages.error(request,'Ya esta registrado')
         else:
-            usuario = Usuario()
+            
+            user243 = Usuario(rut = (request.POST.get('Rut')), nombres = (request.POST.get('name')),
+                         apellidos = (request.POST.get('apellido')), telefono = (request.POST.get('telefono')),
+                         correo = (request.POST.get('email')), clave = (request.POST.get('password')),
+                         pregunta_id = (request.POST.get('security-question')), respuesta = (request.POST.get('securityanswer')),
+                         rol_id = '2')
+            user243.save()
 
-            usuario.rut = request.POST.get('Rut')
-            usuario.nombres = request.POST.get('name')
-            usuario.apellidos = request.POST.get('apellido')
-            usuario.telefono = request.POST.get('telefono')
-            usuario.correo = request.POST.get('email')
-            usuario.clave = request.POST.get('password')
-            usuario.pregunta = request.POST.get('security-question')
-            usuario.respuesta = request.POST.get('securityanswer')
-            usuario = Usuario(rol_id = '2')
-            if 1==1 :
-                usuario.save()
-            User = User.objects.auth.create_user(username = 'email',
-                                                email = 'email',
-                                              password = 'password')
-            User.is_staff=True
-            if 1==1 : 
-                User.save()
-                return redirect('login')
+            user32 = User.objects.create_user(username = comp,
+                                                email = comp,
+                                              password = request.POST.get('password'))
+            
+            user32.save()
+            return redirect('login')
     return render(request, 'menu/create.html', 
                     {"pre" : pre});
 

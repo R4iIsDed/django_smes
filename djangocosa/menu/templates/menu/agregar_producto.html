@@ -33,7 +33,7 @@
         <div class="card md-sm-auto">
             <div class="card-body">
                 <h3 class="card-title">Agregar producto</h3>
-                <form action="" method="POST" id="form">
+                <form action="{% url 'agregar_producto' %}" method="post" id="form" enctype="multipart/form-data">
                     <div class="form">
                         <div class="grupo">
                             <label for="nombre">Nombre:</label>
@@ -58,15 +58,22 @@
                         <div class="form-group">
                             <label for="security-question">categoria</label>
                             <select class="form-control" id="categoria" name="categoria">
-                                <option value="">--Eliga una categoria--</option>
+                                <option value="0">--Eliga una categoria--</option>
                                 {% for e in pre %} 
                                     <option value="{{ e.id_categoria }}">{{ e.nombre_categoria }}</option>
                                 {% endfor %}
                               
                             </select>
                           </div>
-                        <button type="submit" style="margin-left: 30%; margin-top: 5%;">Agregar producto</button>
-                    </div>
+                          <button type="submit" style="margin-left: 30%; margin-top: 5%;">Agregar producto</button>
+                          {% if messages %}
+        <div>
+          {% for i in messages %}
+          <p style="color: red;">{{ i }}</p>
+          {% endfor %}
+        </div>
+        {% endif %}
+                        </div>
                 </form>
             </div>
         </div>
