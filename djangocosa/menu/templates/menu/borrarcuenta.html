@@ -31,14 +31,23 @@
     <div class="card">
       <div class="card-body">
         <h3 class="card-title text-center">Borrar cuenta</h3>
-        <form id="erase" action="" method="post">
+        <form id="erase" action="{% url 'borrarcuenta' %}" method="post">
+          {% if messages %}
+        <div>
+          {% for i in messages %}
+          <p>{{ i }}</p>
+          {% endfor %}
+        </div>
+        {% endif %}
+          {%csrf_token%}
           <div class="form-group">
             <label for="password">Contraseña</label>
             <input type="password" class="form-control" id="password" name="password" placeholder="ingrese contraseña">
           </div>
-          <input class="submit" type="submit" value="Crear cuenta" />
+          <input class="submit" type="submit" value="Eliminar cuenta" />
         </form>
       </div>
+      
     </div>
   </div>
 </body>

@@ -81,6 +81,16 @@ def banadmin(request):
     return render(request, 'menu/banadmin.html');
 
 def borrarcuenta(request):
+    if Usuario.objects.filter(correo=User.username).exists():
+        user2 = User.objects.get(username = User.username)
+        user = Usuario.objects.get(correo = user2.username)
+        passs = request.POST.get('password')
+        if user.clave == passs and user2.password == passs :
+            user2.delete()
+            user.delete()
+            return redirect('login')
+        else:
+             messages.ERROR('Su contrasena es incorrecta')
     return render(request, 'menu/borrarcuenta.html');
 
 def Cactus(request):
@@ -213,16 +223,13 @@ def Pesticidas(request):
     return render(request, 'menu/Pesticidas.html', 
                   {"prod":prod});
 
-def profile(request):
-    return render(request, 'menu/profile.html');
 
 @login_required
 def ver_usuario(request):
-    usuario = Usuario.objects.get(user=request.user)
+    usuario = Usuario.objects.filter(correo=User.username).first()
     return render(request,
-                'menu/profile.html',
-                {'usuario' : usuario})
-
+                        'menu/profile.html',
+                        {'usuario' : usuario})
 
 def Cfertilizante(request, id):
     producto = Producto.objects.get(id_prod = id)

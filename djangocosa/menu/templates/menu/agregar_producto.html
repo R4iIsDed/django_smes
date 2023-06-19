@@ -34,6 +34,7 @@
             <div class="card-body">
                 <h3 class="card-title">Agregar producto</h3>
                 <form action="{% url 'agregar_producto' %}" method="post" id="form" enctype="multipart/form-data">
+                    {%csrf_token%}
                     <div class="form">
                         <div class="grupo">
                             <label for="nombre">Nombre:</label>
