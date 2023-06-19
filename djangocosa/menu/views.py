@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate,login, logout
 from django.contrib.auth.models import User
 from .models import Usuario, Producto , Pregunta, Categoria
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -202,6 +203,14 @@ def Pesticidas(request):
 
 def profile(request):
     return render(request, 'menu/profile.html');
+
+@login_required
+def ver_usuario(request):
+    usuario = Usuario.objects.get(user=request.user)
+    return render(request,
+                'menu/profile.html',
+                {'usuario' : usuario})
+
 
 def Cfertilizante(request, id):
     producto = Producto.objects.get(id_prod = id)

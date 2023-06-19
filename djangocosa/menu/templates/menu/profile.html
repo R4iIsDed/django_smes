@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Shop Homepage - Start Bootstrap Template</title>
+        <title>perfil</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -113,8 +113,8 @@
                 Mi perfil
               </div>
               <div class="card-body">
-                <h5 class="card-title">Juanito Pears</h5>
-                <p class="card-text"><strong>Email:</strong> PearsJuan@email.com</p>
+                <h5 class="card-title">{{ usuario.user.nombres }}</h5>
+                <p class="card-text"><strong>Email:</strong> {{ usuario.user.correo }}</p>
               </div>
               <a href="{% url 'chNGE' %}" class="btn btn-primary">Cambiar contraseña</a> 
               <a href="{% url 'borrarcuenta' %}" class="btn btn-primary">eliminar cuenta</a> 
