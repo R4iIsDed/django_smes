@@ -218,7 +218,8 @@ def profile(request):
 
 @login_required
 def ver_usuario(request):
-    usuario = Usuario.objects.get(user=request.user)
+    ser = request.user.username
+    usuario = Usuario.objects.filter(correo =  ser)
     return render(request,
                 'menu/profile.html',
                 {'usuario' : usuario})

@@ -2,6 +2,7 @@
 <html lang="en">
   {% load static %}
     <head>
+      <script src="https://cdn.tailwindcss.com"></script>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -108,13 +109,16 @@
               <div class="card-header">
                 Mi perfil
               </div>
+              {% for x in usuario %}
               <div class="card-body">
-                <h5 class="card-title">{{ usuario.nombres }}</h5>
-                <p class="card-text"><strong>Email:</strong> {{ usuario.correo }}</p>
+                <h5 class="card-title">{{ x.nombres }}</h5>
+                <p class="card-text"><strong>Email:</strong> {{ x.correo }}</p>
               </div>
+              {% endfor %}
               <a href="{% url 'chNGE' %}" class="btn btn-primary">Cambiar contraseña</a> 
               <a href="{% url 'borrarcuenta' %}" class="btn btn-primary">eliminar cuenta</a> 
             </div>
+
           </div>
         </section>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
