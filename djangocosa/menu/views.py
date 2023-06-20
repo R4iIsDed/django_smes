@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth import authenticate,login, logout
 from django.contrib.auth.models import User
-from .models import Usuario, Producto , Pregunta, Categoria
+from .models import Usuario, Producto , Pregunta, Categoria, Factura, Detalle
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -220,9 +220,13 @@ def profile(request):
 def ver_usuario(request):
     ser = request.user.username
     usuario = Usuario.objects.filter(correo =  ser)
-    return render(request,
-                'menu/profile.html',
-                {'usuario' : usuario})
+    factura = Factura.objects.filter(usuario = usuario.id_usuario)
+    detalle = Detalle.objects.filter(factu = Factura.factura)
+    produ = Producto.objects.all()
+    return render(request, 'menu/profile.html',{'usuario' : usuario,
+                 'factura' : factura ,
+                 'detalle' : detalle,
+                 "produ" : produ })
 
 
 def Cfertilizante(request, id):

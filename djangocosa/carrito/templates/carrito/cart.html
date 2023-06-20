@@ -90,11 +90,11 @@
           {% for item in cart %}
           <div class="product mb-6 flex pr-6">
             <a href="#" class="w-1/4">
-              <img class="rounded-xl hover:shadow-lg" src="{{ item.product.get.imagen }} " />
+              <img class="rounded-xl hover:shadow-lg" src="{{ item.producto.get_imagen }} " />
             </a>
             <div class="w-3/4 pl-6">
               <div class="flex justify-between">
-                <a href="#" class="text-lg">{{ item.product.name }}</a>
+                <a href="#" class="text-lg">{{ item.product.nombre }}</a>
                 <span class="text-grey-100 mb-6 pt-1"> ${{ item.total_price }} </span>
               </div>
               <hr />

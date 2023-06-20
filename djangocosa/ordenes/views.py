@@ -19,7 +19,7 @@ def start_order(request):
             quantity = int(item['quantity'])
             price = product.price * quantity
 
-            item =  Detalle.objects.create(factu = fact.factura, producto = product, price = price, cantidad = quantity)
+            item =  Detalle.objects.create(factu = fact.factura, produto = product, price = price, cantidad = quantity)
 
         return redirect('ver_usuario')
     return redirect('cart')
