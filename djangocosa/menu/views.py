@@ -62,7 +62,7 @@ def index(request) :
 def agregar_producto(request):
     pre = Categoria.objects.all()
     if request.method == "POST":      
-        producto = Producto()
+        producto = Producto.objects.create()
         producto.nombre_prod = request.POST.get('nombre')
         producto.descripcion = request.POST.get('descripcion')
         producto.precio = request.POST.get('precio')

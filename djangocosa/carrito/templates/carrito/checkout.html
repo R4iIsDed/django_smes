@@ -133,7 +133,7 @@
                 <option value="{{a.id_direc}}">{{a.calle}}</option>
                 {% endfor%}
                 </select>
-                <button type="submit" class= "inline-block rounded-xl bg-green-100 px-8 py-4 text-black hover:bg-green-300">Confirmar compra</button>
+                <button type="submit" class= "inline-block rounded-xl bg-green-100 px-8 py-4 text-black hover:bg-green-300" action="{% url 'start_order'%}">Confirmar compra</button>
               </form>
               {% for x in messages %}
                 <p class="mb-3 text-red-500">{{ x }}</p>

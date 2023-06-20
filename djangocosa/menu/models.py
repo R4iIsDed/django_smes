@@ -76,12 +76,18 @@ class Producto(models.Model):
         return self.nombre_prod
     
 class Factura(models.Model):
-    id_factura = models.AutoField(primary_key=True)
-    fecha_compra = models.DateField()
-    estatus = models.CharField(max_length=200)
-    cod_despacho = models.CharField(max_length=40)
-    costo_despacho = models.IntegerField()
-    comp_despacho = models.CharField(max_length=30)
-    total = models.IntegerField()
-    direccion = models.ForeignKey(Direccion,on_delete=models.CASCADE)
-    usuario = models.ForeignKey(Usuario,on_delete=models.CASCADE)
+    factura =  models.AutoField(primary_key=True)
+    usuario = models.ForeignKey(Usuario, related_name='facturas', blank=True, null=True , on_delete=models.CASCADE)
+    direcc = models.ForeignKey(Direccion, related_name="factura", on_delete=models.CASCADE)
+    fechacompra = models.DateTimeField(auto_now_add=True)
+    pagao = models.BooleanField(default=False)
+    montopagao = models.IntegerField(blank=True, null=True)
+    estatus = models.CharField(max_length=20)
+
+class Detalle(models.Model):
+    detalle = models.AutoField(primary_key=True)
+    factu = models.ForeignKey(Factura, related_name="cosas", on_delete=models.CASCADE)
+    produto = models.ForeignKey(Producto, related_name="prod", on_delete=models.CASCADE)
+    price =  models.IntegerField()
+    cantidad = models.IntegerField()
+

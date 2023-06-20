@@ -28,7 +28,8 @@ urlpatterns = [
     path('carrito1/<int:product_id>', add_to_cart, name='add_to_cart'),
     path('carrito', cart, name='cart'),
     path('carrito/pago', checkout , name= "checkout"),
-    path('direccion', direccion , name= "direccion")
+    path('direccion', direccion , name= "direccion"),
+    path('order/', include('ordenes.urls'))
 
 ]
 if settings.DEBUG:
