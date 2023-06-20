@@ -26,7 +26,7 @@ urlpatterns = [
     path('api/', include('rest_comuna.urls')),
     path('docs/', include_docs_urls(title='Api Documentation')),
     path('carrito1/<int:product_id>', add_to_cart, name='add_to_cart'),
-    path('carrito', cart, name='cart'),
+    path('carrito', cart, name='carrito'),
     path('carrito/pago', checkout , name= "checkout"),
     path('direccion', direccion , name= "direccion"),
     path('order/', include('ordenes.urls'))
