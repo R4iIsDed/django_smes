@@ -1,33 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  {% load static %}
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>perfil</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{% static 'menu/css/styles.css' %}" rel="stylesheet" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link type="text/css" rel="stylesheet" href="{% static 'menu/css/styles.css' %}">
   <link rel="stylesheet" href="{% static 'menu/css/navbar.css' %}">
-
-    </head>
-    <body>
-      <nav class="navbar navbar-expand-lg navbar-dark" style="z-index: 20;">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="z-index: 20;">
         <a class="navbar-brand" href="{% url 'index' %}"> Se venden plantas¿</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,6 +26,10 @@
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link active" href="{% url 'index' %}"><i class="fa fa-house"></i> Inicio</a>
+            </li>
+    
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'ofertas' %}"><i class="fa-solid fa-money-bill-trend-up"></i> Ofertas</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'Contacto' %}"><i>
@@ -60,8 +53,8 @@
                 <a class="nav-link" data-toggle="dropdown" href="#">{{ user.username }}
                 <span class="caret"></span></a>
     
-                  {% if User.is_staff %}
-                    <li><a href="{% url 'Perfil_admistrador' %}">Administración</a></li>
+                  {% if user.is_staff %}
+                    <li><a href="{% url 'Perfil_administrador' %}">Administración</a></li>
                   {% endif %}
                   <li><a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a></li>
                   
@@ -92,33 +85,38 @@
             {% endif %}
           </div>
       </nav>
-      
-        <!-- Header-->
-        <header id="titulo_perfil" class="py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-black">
-                    <h1 class="display-3 fw-bolder"><b>Perfil</b></h1>
-                </div>
-            </div>
-        </header>
-        <!-- Section-->
-        <section class="py-5">
-          <div class="container">
-            <div class="card">
-              <div class="card-header">
-                Mi perfil
+      <div class="max-w-6x1 mx-auto flex flex-wrap items-start py-6 xl:px-0">
+        <div class="product w-3/4 lg:w-3/4">
+          {% for item in cart %}
+          <div class="product mb-6 flex pr-6">
+            <a href="#" class="w-1/4">
+              <img class="rounded-xl hover:shadow-lg" src="{{ item.product.get.imagen }} " />
+            </a>
+            <div class="w-3/4 pl-6">
+              <div class="flex justify-between">
+                <a href="#" class="text-lg">{{ item.product.name }}</a>
+                <span class="text-grey-100 mb-6 pt-1"> ${{ item.total_price }} </span>
               </div>
-              <div class="card-body">
-                <h5 class="card-title">{{ usuario.nombres }}</h5>
-                <p class="card-text"><strong>Email:</strong> {{ usuario.correo }}</p>
+              <hr />
+              <div class="QUANTITY mt-6 flex items-center space-x-4">
+                <a href="" class="bg-gray-100 p-3">-</a>
+                <span>{{ item.quantity }}</span>
+                <a href="" class="bg-gray-100 p-3">+</a>
               </div>
-              <a href="{% url 'chNGE' %}" class="btn btn-primary">Cambiar contraseña</a> 
-              <a href="{% url 'borrarcuenta' %}" class="btn btn-primary">eliminar cuenta</a> 
             </div>
           </div>
-        </section>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="{% static 'menu/js/scripts.js' %}"></script>
-    </body>
+          {% endfor %}
+        </div>
+        <div class="summary mt-3 w-1/4 rounded-xl bg-gray-100 p-6">
+          <h2 class="texr-lg mb-5 uppercase">Subtotal</h2>
+          <div class="mb-6 flex justify-between">
+            <span class="font-semibold"> total </span>
+            <span>${{ cart.get_total_cost}}</span>
+          </div>
+      
+          <a href="{% url 'checkout' %}" class="inline-block rounded-xl bg-green-100 px-8 py-4 text-black hover:bg-green-300">Comprar ahora </a>
+        </div>
+      </div>
+      
+</body>
 </html>

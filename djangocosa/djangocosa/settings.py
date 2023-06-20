@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 SESSION_COOKIE_AGE = 86400
 CARRITO_SESSION_ID = 'carrito'
+LOGIN_URL = '/login2'
 
 # Application definition
 

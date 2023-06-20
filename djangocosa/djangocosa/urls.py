@@ -18,14 +18,25 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework.documentation import include_docs_urls
+<<<<<<< Updated upstream
 from carrito.views import add_to_cart
+=======
+from carrito.views import add_to_cart, cart, checkout, direccion
+>>>>>>> Stashed changes
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('menu.urls')),
     path('api/', include('rest_comuna.urls')),
     path('docs/', include_docs_urls(title='Api Documentation')),
+<<<<<<< Updated upstream
     path('carrito/<int:product_id>', add_to_cart, name='add_to_cart'),
+=======
+    path('carrito1/<int:product_id>', add_to_cart, name='add_to_cart'),
+    path('carrito', cart, name='cart'),
+    path('carrito/pago', checkout , name= "checkout"),
+    path('direccion', direccion , name= "direccion")
+>>>>>>> Stashed changes
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
