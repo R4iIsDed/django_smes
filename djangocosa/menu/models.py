@@ -78,8 +78,6 @@ class Producto(models.Model):
 class Factura(models.Model):
     id_factura = models.AutoField(primary_key=True)
     fecha_compra = models.DateField()
-    f_despacho = models.DateField()
-    f_entrega = models.DateField()
     estatus = models.CharField(max_length=200)
     cod_despacho = models.CharField(max_length=40)
     costo_despacho = models.IntegerField()
