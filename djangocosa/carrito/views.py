@@ -14,9 +14,6 @@ def add_to_cart(request, product_id):
     cart = Cart(request)
 
     cart.add(product_id)
-<<<<<<< Updated upstream
-    return render(request, 'cart/menu_cart.html')
-=======
     return render(request, 'carrito/menu_cart.html')
 
 @login_required
@@ -51,4 +48,4 @@ def checkout(request):
         else:
             messages.error(request, "no cuenta con direcciones agrege una")
     return render(request, 'carrito/checkout.html', {"direc" : direc})
->>>>>>> Stashed changes
+
