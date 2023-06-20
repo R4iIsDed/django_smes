@@ -85,14 +85,5 @@ class Factura(models.Model):
     costo_despacho = models.IntegerField()
     comp_despacho = models.CharField(max_length=30)
     total = models.IntegerField()
-    carrito = models.CharField(max_length=40)
     direccion = models.ForeignKey(Direccion,on_delete=models.CASCADE)
     usuario = models.ForeignKey(Usuario,on_delete=models.CASCADE)
-
-class Detalle(models.Model):
-    id_detalle = models.AutoField(primary_key=True)
-    cantidad = models.IntegerField()
-    subtotal = models.IntegerField()
-    factura = models.ForeignKey(Factura,on_delete=models.CASCADE)
-    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
-

@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .carrito import Cart
-from menu.models import Usuario, Producto, Direccion, Factura, Detalle, Comuna, Region
+from menu.models import Usuario, Producto, Direccion, Comuna
 from django.contrib.auth.models import User
 
 # Create your views here.

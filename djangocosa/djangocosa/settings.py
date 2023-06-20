@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'coreapi',
     'carrito',
     'menu',
+    'ordenes',
     'rest_comuna',
     'rest_framework.authtoken'
 ]
