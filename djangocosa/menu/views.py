@@ -59,6 +59,7 @@ def login2 (request) :
 def index(request) :
     return render (request, 'menu/index.html');
 
+@login_required
 def agregar_producto(request):
     pre = Categoria.objects.all()
     if request.method == "POST":      
@@ -80,6 +81,7 @@ def agregar_producto(request):
 def banadmin(request):
     return render(request, 'menu/banadmin.html');
 
+@login_required
 def borrarcuenta(request):
     return render(request, 'menu/borrarcuenta.html');
 
@@ -93,6 +95,7 @@ def Carrito(request):
 
 def Categorias(request):
     return render(request, 'menu/categorias.html');
+
 
 def changeforgoh(request):
     email = request.POST.get('email')
@@ -117,6 +120,7 @@ def changeforgoh(request):
         messages.error("el correo no esta registrado")
     return render(request, 'menu/changeforgoh.html', {'pre' : pre});
 
+@login_required
 def chNGE(request ):
     if Usuario.objects.filter(correo=User.username).exists():
         user2 = User.objects.get(username = User.username)
@@ -144,7 +148,7 @@ def Contacto(request):
 def editar_producto(request):
     return render(request, 'menu/editar_producto.html');
 
-
+@login_required
 def editarProducto(request):
     idP = request.POST.get('id')
     nombreP = request.POST.get('nombre')
@@ -170,6 +174,7 @@ def editarProducto(request):
         messages.error(request, "producto no existente")
     return render(request, 'menu/editar_producto.html');
 
+@login_required
 def eliminar_producto(request):
     producto = Producto.objects.all()
     contexto = {
@@ -202,6 +207,7 @@ def Maceteros(request):
 def ofertas(request):
     return render(request, 'menu/ofertas.html');
 
+@login_required
 def Perfil_administrador(request):
     wea = Usuario.objects.filter(correo = User.username)
     return render(request, 'menu/Perfil_administrador.html', {
@@ -236,6 +242,7 @@ def Cfertilizante(request, id):
     }
     return render(request, 'menu/Cfertilizante.html', contexto)
 
+@login_required
 def create_admin (request) :
     pre = Pregunta.objects.all()
     {
