@@ -98,26 +98,27 @@ def Categorias(request):
 
 
 def changeforgoh(request):
-    email = request.POST.get('email')
     pre = Pregunta.objects.all()
-    if Usuario.objects.filter(correo=email).exists():
-        user = Usuario.objects.get(correo = email)
-        user2 = User.objects.get(username = user.correo)
-        pregun = request.POST.get('securityquestion')
-        if user.pregunta == pregun :
-            respues = request.POST.get('securityanswer')
-            if user.respuesta == respues :
-                new = request.POST.get('newpassword')
-                user.clave = new
-                user.save()
-                user2.password = new
-                user2.save()
+    if request.method == "POST":
+        email1 = request.POST.get('email')
+        if Usuario.objects.filter(correo=email1).exists():
+            user = Usuario.objects.get(Correo = email1)
+            user2 = User.objects.get(username = user.correo)
+            pregun = request.POST.get('securityquestion')
+            if user.pregunta == pregun :
+                respues = request.POST.get('securityanswer')
+                if user.respuesta == respues :
+                    new = request.POST.get('newpassword')
+                    user.clave = new
+                    user.save()
+                    user2.password = new
+                    user2.save()
+                else:
+                    messages.error("la respuesta no es la correcta")
             else:
-                messages.error("la respuesta no es la correcta")
-        else:
-            messages.error("la pregunta de seguridad elegida no es la correcta")
-    else: 
-        messages.error("el correo no esta registrado")
+                messages.error("la pregunta de seguridad elegida no es la correcta")
+        else: 
+            messages.error("el correo no esta registrado")
     return render(request, 'menu/changeforgoh.html', {'pre' : pre});
 
 @login_required
