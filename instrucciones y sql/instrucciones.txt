@@ -6,7 +6,9 @@
 
 4.- Instalar django rest framework (python -m pip install djangorestframework)
 
-5.- Crear usuario en SQL PLUS abriendo la terminal de sql plus, primero conectarse al sistema con 
+5.- instalar coreapi (python -m pip install coreapi)
+
+6.- Crear usuario en SQL PLUS abriendo la terminal de sql plus, primero conectarse al sistema con 
 nombre de usuario: sys as sysdba	
 y la contraseña generalmente es "system"
 Luego escribir los siguientes comandos
@@ -15,14 +17,16 @@ Luego escribir los siguientes comandos
 	"grant connect, resource to se_venden_plantas"
 	"alter user se_venden_plantas defaulttablespace users quota unlimited on users"
 
-6.- Crear migrtacion de los modelos mediante la terminal (python manage.py makemigrations)
+7.- Crear migrtacion de los modelos mediante la terminal (python manage.py makemigrations)
 
-7.- Migrar los modelos o db mediante la terminal (python manage.py migrate)
+8.- Migrar los modelos o db mediante la terminal (python manage.py migrate)
 
-7.1.- en caso de presentar error de cx_oracle seguir la ruta especificada para instalar c++ y utilizar mediante 
+8.1.- en caso de presentar error de cx_oracle seguir la ruta especificada para instalar c++ y utilizar mediante 
 la terminal "python -m pip install cx_oracle"
 
-8.- Crear super usuario o usuario administrador para nuestra pagina mediante la terminal (python manage.py createsuperuser) especificando los datos requeridos para el usuario haciendo que coincidan con el usuario sql creado anteriormente
+8.2.- conectar a la BDD con data developer e ejecutar sql.sql para rellenar la bdd 
 
-9.- Para finalizar, ejecutar nuestro proyecto web mediante la terminal (python manage.py runserver)
+9.- Crear super usuario o usuario administrador para nuestra pagina mediante la terminal (python manage.py createsuperuser) especificando los datos requeridos para el usuario haciendo que coincidan con el usuario sql creado anteriormente
+
+10.- Para finalizar, ejecutar nuestro proyecto web mediante la terminal (python manage.py runserver)
 
