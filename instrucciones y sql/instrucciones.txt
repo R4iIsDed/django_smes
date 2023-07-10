@@ -1,0 +1,28 @@
+1.- Abrir terminal para realizar instalaciones necesarias correspondientes
+
+2.- Instalar Django desde la terminal (python -m pip install django)
+
+3.- Instalar pillow desde la terminal (python -m pip install pillow)
+
+4.- Instalar django rest framework (python -m pip install djangorestframework)
+
+5.- Crear usuario en SQL PLUS abriendo la terminal de sql plus, primero conectarse al sistema con 
+nombre de usuario: sys as sysdba	
+y la contraseña generalmente es "system"
+Luego escribir los siguientes comandos
+	"alter session set "_ORACLE_SCRIPT"=True;"
+	"CREATE USER se_venden_plantas IDENTIFIED BY se_venden_plantas;"
+	"grant connect, resource to se_venden_plantas"
+	"alter user se_venden_plantas defaulttablespace users quota unlimited on users"
+
+6.- Crear migrtacion de los modelos mediante la terminal (python manage.py makemigrations)
+
+7.- Migrar los modelos o db mediante la terminal (python manage.py migrate)
+
+7.1.- en caso de presentar error de cx_oracle seguir la ruta especificada para instalar c++ y utilizar mediante 
+la terminal "python -m pip install cx_oracle"
+
+8.- Crear super usuario o usuario administrador para nuestra pagina mediante la terminal (python manage.py createsuperuser) especificando los datos requeridos para el usuario haciendo que coincidan con el usuario sql creado anteriormente
+
+9.- Para finalizar, ejecutar nuestro proyecto web mediante la terminal (python manage.py runserver)
+
