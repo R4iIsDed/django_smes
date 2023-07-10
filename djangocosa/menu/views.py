@@ -128,13 +128,14 @@ def chNGE(request ):
         passs = request.POST.get('currentpassword')
         npass = request.POST.get('newpassword')
         if user.clave == passs and user2.password == passs :
-            user.clave = passs
-            user2.password = passs
+            user.clave = npass
+            user2.password = npass
             user.save()
             user2.save()
             return redirect('logout')
         else:
             messages.ERROR('Su contrasena es incorrecta')
+
     return render(request, 'menu/chNGE.html');
 
 
