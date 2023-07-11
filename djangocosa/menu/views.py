@@ -268,7 +268,6 @@ def create_admin (request) :
                                               password = request.POST.get('password'))
             
             user32.save()
-            return redirect('login')
     return render(request, 'menu/create.html', 
                     {"pre" : pre});
 
@@ -276,3 +275,27 @@ def create_admin (request) :
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+
+@login_required
+def modi(request): 
+    ser = request.user.username
+    user2 = User.objects.get(username = User.username)
+    usuario = Usuario.objects.get(correo =  ser)
+    if request.method == 'post':
+        contra = request.post.get('password')
+        if contra == usuario.clave :
+            nombre = request.post.get('name')
+            apellido = request.post.get('apellido')
+            telefon = request.post.get('telefono')
+            corre = request.post.get('email')
+            usuario(nombres = nombre, apellidos = apellido, telefono = telefon, correo = corre)
+            usuario.save()
+            user2(username = corre,
+                   email = corre)
+            return redirect('logout')
+        else:
+            messages.error(request,'Usuario y/o contraseña incorrecta')
+    return render(request, 'menu/modi.html', {
+        "usua" : usuario
+    })
