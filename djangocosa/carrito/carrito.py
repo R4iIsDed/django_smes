@@ -14,10 +14,10 @@ class Cart(object):
 
     def __iter__(self):
         for p in self.cart.keys():
-            self.cart[str(p)]['product'] = Producto.objects.get(pk = p)
+            self.cart[str(p)]['producto'] = Producto.objects.get(pk = p)
 
         for item in self.cart.values():
-            item['total_price'] = int(item['product'].precio * item['quantity'])/100
+            item['total_price'] = int(item['producto'].precio * item['quantity'])
 
             yield item
 
@@ -29,27 +29,27 @@ class Cart(object):
         self.session[settings.CARRITO_SESSION_ID] = self.cart
         self.session.modified = True
 
-    def add(self, product_id, quantity = 1, update_quantity = False):
-        product_id = str(product_id)
+    def add(self, producto_id, quantity = 1, update_quantity = False):
+        producto_id = str(producto_id)
 
-        if product_id not in self.cart :
-            self.cart[product_id] = {'quantity': 1, 'id': product_id}
+        if producto_id not in self.cart :
+            self.cart[producto_id] = {'quantity': 1, 'id': producto_id}
         
         if update_quantity:
-            self.cart[product_id][quantity] += int(quantity)
+            self.cart[producto_id][quantity] += int(quantity)
 
-            if self.cart[product_id]['quantity']== 0 :
-                self.remove(product_id)
+            if self.cart[producto_id]['quantity']== 0 :
+                self.remove(producto_id)
 
         self.save()
     
-    def remove(self, product_id):
-        if product_id in self.cart:
-            del self.cart[product_id]
+    def remove(self, producto_id):
+        if producto_id in self.cart:
+            del self.cart[producto_id]
             self.save()
     
     def get_total_cost(self):
         for p in self.cart.keys():
-            self.cart[str(p)]['product'] = Producto.objects.get(pk = p)
+            self.cart[str(p)]['producto'] = Producto.objects.get(pk = p)
 
-        return sum(int(item['product'].precio * item['quantity'])/100 for item in self.cart.values())
+        return sum(int(item['producto'].precio * item['quantity']) for item in self.cart.values())

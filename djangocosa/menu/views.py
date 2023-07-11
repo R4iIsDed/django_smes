@@ -280,7 +280,7 @@ def logout_view(request):
 @login_required
 def modi(request): 
     ser = request.user.username
-    user2 = User.objects.get(username = User.username)
+    user2 = User.objects.get(username = ser)
     usuario = Usuario.objects.get(correo =  ser)
     if request.method == 'post':
         contra = request.post.get('password')
